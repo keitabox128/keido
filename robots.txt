@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://tsu-nera.github.io/keido/sitemap.xml
