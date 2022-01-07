@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>WIKI on Keido</title><link>https://tsu-nera.github.io/keido/tags/WIKI/</link><description>Recent content in WIKI on Keido</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://tsu-nera.github.io/keido/tags/WIKI/index.xml" rel="self" type="application/rss+xml"/><item><title>📝adb</title><link>https://tsu-nera.github.io/keido/notes/20211229061513/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://tsu-nera.github.io/keido/notes/20211229061513/</guid><description>adb（Android Debug Bridge）はAndroid端末をデバッグする為のツール.1 Android SDK Platform-Toolsのひとつなので，インストールはSDK Platform-Toolsをインストールする.2
+PCとAndroid端末をTCP通信で接続することでPCから様々な設定や操作が可能になる.USB経由で接続する方法とWiki経由で接続する方法がある.
+adbをAndroidで利用するには，開発者向けオプションが有効になっている必要がある.3 またAndroid v10以前ではUSB経由でadbに乗り込んでportを開ける手順が必要(adb tcpip 5555).v11以上ならAndroidからの設定だけでよい.
+External Links # Android Debug Bridge（adb） - Android Developers公式(ja)の説明.&amp;#160;&amp;#x21a9;&amp;#xfe0e;
+https://developer.android.com/studio/releases/platform-tools?hl=ja&amp;#160;&amp;#x21a9;&amp;#xfe0e;
+https://developer.android.com/studio/command-line/adb?hl=ja#Enabling&amp;#160;&amp;#x21a9;&amp;#xfe0e;</description></item><item><title>📝Emacs</title><link>https://tsu-nera.github.io/keido/notes/20211228180209/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://tsu-nera.github.io/keido/notes/20211228180209/</guid><description>Emacs Tips # fcitxでEmacs GUIの日本語入力ができないときの対処方法 # 環境変数でLC_CTYPE=zh_CN.UTF-8を設定して起動する.
+link: https://fcitx-im.org/wiki/Input%5Fmethod%5Frelated%5Fenvironment%5Fvariables
+#!/bin/bash LC_CTYPE=zh_CN.UTF-8 emacs 日本語情報がなくて苦戦したが中国語でも同じ課題があるだろうという観点で検索したら解決方法か見つかったので載せておく.
+howto: init.elをOrg Fileから生成するには? # see
+Emacsの設定（その2）設定ファイル（init.el）をorg-modeで管理する | A perfect autumn day init.elをOrg Fileから生成してそうなサイト # https://takaxp.github.io/init.html https://www.grugrut.net/posts/my-emacs-init-el/ https://mugijiru.github.io/.emacs.d/basics/custom-file/ example: Doom Emacs実装 # わたしの場合，Doom Emacsをつかっている(2022現在)ので，init.elではなくconfig.elに設定を追加.
+(require &amp;#39;org-install) (org-babel-load-file &amp;#34;~/.doom.d/hekireki.org&amp;#34;) 参照 # 現在のわたしの設定: ⚡My Emacs Config - 霹靂一閃
+以前，babel-loaderをつかってOrg fileを細かく分割して管理していたが，カオスになったのでゴミ箱に捨てました.
+🖊babel-loader:org-mode で init.</description></item><item><title>📝GTD</title><link>https://tsu-nera.github.io/keido/notes/20220103071935/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://tsu-nera.github.io/keido/notes/20220103071935/</guid><description>Getting Things Done.</description></item><item><title>📝Org-mode</title><link>https://tsu-nera.github.io/keido/notes/20211211071525/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://tsu-nera.github.io/keido/notes/20211211071525/</guid><description>Org-capture # howto: Google Chomeの閲覧内容をorg-captureするには? # org-protocol と Chrome ExtentionのOrg Capture を利用する.
+仕組みとしては，Chromeにインストールした拡張機能がorg-protocolというMIME type(アプリケーションを識別する体系)を発行するので，それをemacsclientで受け取って処理をする.
+具体的にはemacslicentのデスクトップアプリケーションを作成して，org-protocolを処理するデフォルトアプリケーションでそのアプリケーションを指定.
+Manjaro Linuxの例(xfce) # ~/.local/share/applications/emacsclient.desktop作成
+[Desktop Entry] Name=Emacsclient Exec=emacsclient %u Icon=emacs Type=Application Terminal=false MimeType=x-scheme-handler/org-protocol ~/.config/mimeapps.listに x-scheme-handler/org-protocol=emacsclient.desktop を追記.
+update-desktop-databbaseをコマンドラインから実行.
+org-captureの設定例.
+(&amp;#34;p&amp;#34; &amp;#34;browser&amp;#34; entry (file &amp;#34;~/gtd/inbox/inbox.org&amp;#34;) &amp;#34;* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%:initial\n#+END_QUOTE\n\n\n%?&amp;#34;) (&amp;#34;L&amp;#34; &amp;#34;browser link&amp;#34; entry (file &amp;#34;~/gtd/inbox/inbox.org&amp;#34;) &amp;#34;* %? [[%:link][%:description]] \nCaptured On: %U&amp;#34;) ポイントはorg-captureのトリガキーをpとLにすること.これはorg-capture-extensionなのでこれを守らないと動かない.もしくは自分でブックマークレットを作成する.
+learn more
+Org-Protocol XDG MIME Applications - ArchWiki https://github.</description></item><item><title>📝Org-roam</title><link>https://tsu-nera.github.io/keido/notes/20211204183600/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://tsu-nera.github.io/keido/notes/20211204183600/</guid><description>EmacsでZettelkasten Methodを実現するためのOrg-mode実装.
+Org-roam まとめ # Org-roamを解説した有料記事 # An Orgmode Note Workflow - Rohit Goswami
+Org-roam-bibtexやOrg-noterと連携した文献管理方法を解説.
+How I note
+Org-roamでZettelkastenを実現するための方法を解説.
+ref: How I note
+Org-roamから生成したサイトまとめ # a.k.a. Digital Garden.
+https://commonplace.doubleloop.net/ How I publish my org-roam wiki with org-publish - doubleloop https://braindump.jethro.dev/ https://braindump.badykov.com/about/ My Braindump - Kraken of Thought https://github.com/ayrat555/braindump https://www.</description></item><item><title>📝ox-hugo</title><link>https://tsu-nera.github.io/keido/notes/20211231044406/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://tsu-nera.github.io/keido/notes/20211231044406/</guid><description>Org-modeからHugoに適したMarkdownとfrontmatterを出力するためのEmacs Package.
+ox-hugo Tips # howot: exportをスキップする方法 # ref: https://ox-hugo.scripter.co/doc/tags-and-categories/#marking-files-to-not-be-exported
+file baseでは，#+hugo_tags に noexport subtree baseでは，#+filetags に noexport howto: ox-hugoで画像を記事に埋め込むには? # ox-hugoは/staticをrootにして画像を探すので，パスは/staticからの相対パスで書く.
+ox-hugoはOrg fileに添付された画像をExportするときに自動でMarkdownファイルと同じディレクトリに配置してくれる.これは管理上とても楽である.
+参考: Images in Content — ox-hugo - Org to Hugo exporter</description></item><item><title>📝Youtube</title><link>https://tsu-nera.github.io/keido/notes/20220107141801/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://tsu-nera.github.io/keido/notes/20220107141801/</guid><description>動画サービス.
+Youtube Tips # YoutubeのプレイリストのRSSを取得するには? # プレイリストのページを開いてplaylist_idを取得して以下のURLで設定.
+https://www.youtube.com/feeds/videos.xml?playlist%5Fid=%7Bplaylist%5Fid}</description></item><item><title>📝Zettelkasten Method</title><link>https://tsu-nera.github.io/keido/notes/20211206071458/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://tsu-nera.github.io/keido/notes/20211206071458/</guid><description>Zettelkasten Methodとは # Niklas Luhmannの考案した, 思考をするための方法論，フレームワーク.
+Zettelkastenという単語はZettelkastenのフレームワークを指す場合とZettlekastenで管理するPermanent Noteを入れる箱(Slipbox)を指す場合の2つがある.これらは書き手や文脈で統一されてないので情報を得るときは注意が必要.
+ZK method, Zettelと省略されることもある.
+Zettelkasten Methodまとめ # Zettelkasten Methodでは以下の4種類のノートの概念がある.
+Fleeting Notes Literature Notes Parmanent Notes Reference Notes 📝Fleeting Notes # 思いついた思考を書き留めたもの.何でもOK, 思いついたら何でも書く.
+道具は紙でも電子でもなんでもよいが，トピックごとだとあとで整理しやすい.
+メインのシステムにNoteを移動したら捨てる,もしくは移動せずにそのまま捨てる.
+Daily Notesについて # Zettelkasten Methodの文脈での時系列のFleeting NotesとしてDaily Notes(DNP)という単語がある.
+とはいえ，Niklus LuhmanやZonke Ahrensの著作ではこの概念は登場しない.
+Roam ResearchやObsidianなどのZettelkastenのソフトウェア実装の文脈でよく登場する.
+📝Literature Notes # 日本語訳では，文献メモとも言われる.Lit Notes, lit notesと略されることもある.
+インプットするたび書く.読んだ本，みたYoutube動画，受けた講座などなど.
+覚えておきたいこと. 自分の思考. アウトプットに使いたいもの. 自分の言葉でリライトしながら書く. 著者の思想を自分の思想に翻訳する意味が有る.自分が理解していないものに対しては自分で書くことができない.
+カードの裏には書誌情報を書く.
+タイトル 発行年 著者 出版社 引用ページ&amp;hellip; 📝Permanent Notes # Concept(=概念)が書かれたノート.</description></item><item><title>📝Zotero</title><link>https://tsu-nera.github.io/keido/notes/20211229203145/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://tsu-nera.github.io/keido/notes/20211229203145/</guid><description>Zotero(ゾテロ)とは，論文管理を目的にしたオープンソースの文献管理ソフトウェア.
+https://www.zotero.org/
+Zoteroまとめ # Zoteroは勉強したインプットのメタ情報の取得とアーカイブが可能 # 論文管理が目的とはいえ，論文でなくてもいろいろ管理することが可能.1
+Web記事 Amazon(書誌情報) Youtube PDF etc&amp;hellip; たとえば，AmazonやYoutubeをZoteroに送信するとメタ情報がZotero画面に表示される. PDFで購入した電子書籍に対してAmazonのページからメタ情報を取得してPDFをその情報に添付することでPDFとメタ情報を管理できる.
+さらに，Web記事はスクリーンショットという機能でhtmlとしてローカルに保存することも可能.
+Zoteroは個人用のローカルはてなブックマーク，メモも管理できる # annotationという形でその文献に対するメモを管理することが可能. いわば，はてなブックマークを詳細情報を含めてローカルで個人管理するようなもの.
+参考文献 # quick start guide : Zotero公式のクイックスタートガイド(ja) 【令和最新版】文献管理ソフト Zoteroのすゝめ｜SD｜note : 日本語の良記事 注釈 # わたしの目的は文献一般を管理すること.論文はなかなか縁がない.&amp;#160;&amp;#x21a9;&amp;#xfe0e;</description></item><item><title>📝Z世代</title><link>https://tsu-nera.github.io/keido/notes/20211217134744/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://tsu-nera.github.io/keido/notes/20211217134744/</guid><description>1996-2012に生まれた世代.
+Generatin Z, GenZともいう.</description></item></channel></rss>

@@ -1,0 +1,1 @@
+navigator.serviceWorker&&navigator.serviceWorker.register("/keido/sw.js",{scope:"/keido/"})
