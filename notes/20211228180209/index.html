@@ -1,0 +1,69 @@
+<!doctype html><html class=no-js lang=ja>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=theme-color content="#1b1b1b">
+<title>📝Emacs | Keido</title>
+<script>(function(a,b){a[b]=a[b].replace("no-js","js")})(document.documentElement,"className")</script>
+<meta name=description content>
+<link rel=stylesheet href=/keido/css/bundle.css>
+<link rel=stylesheet href=/keido/css/themes/dark-red.css>
+<link rel=icon href=/keido/icons/16.png sizes=16x16 type=image/png>
+<link rel=icon href=/keido/icons/32.png sizes=32x32 type=image/png>
+</head>
+<body class="body kind-page">
+<header class=header>
+<a class=logo href=/keido/>Keido</a>
+</header>
+<div class=primary>
+<main class=main>
+<div class="single block">
+<article class=entry>
+<h1 class=entry__title>📝Emacs</h1>
+<div class=entry__content><h2 id=emacs-tips>Emacs Tips</h2>
+<h3 id=fcitxでemacs-guiの日本語入力ができないときの対処方法>fcitxでEmacs GUIの日本語入力ができないときの対処方法</h3>
+<p>環境変数でLC_CTYPE=zh_CN.UTF-8を設定して起動する.</p>
+<p>link: <a href=https://fcitx-im.org/wiki/Input%5Fmethod%5Frelated%5Fenvironment%5Fvariables>https://fcitx-im.org/wiki/Input%5Fmethod%5Frelated%5Fenvironment%5Fvariables</a></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=color:#75715e>#!/bin/bash
+</span><span style=color:#75715e></span>LC_CTYPE<span style=color:#f92672>=</span>zh_CN.UTF-8 emacs
+</code></pre></div><blockquote>
+<p>日本語情報がなくて苦戦したが中国語でも同じ課題があるだろうという観点で検索したら解決方法か見つかったので載せておく.</p>
+</blockquote>
+<h3 id=howto-init-dot-elをorg-fileから生成するには>howto: init.elをOrg Fileから生成するには?</h3>
+<p>see</p>
+<ul>
+<li><a href=https://taipapamotohus.com/post/init%5Forg/>Emacsの設定（その2）設定ファイル（init.el）をorg-modeで管理する | A perfect autumn day</a></li>
+</ul>
+<h4 id=init-dot-elをorg-fileから生成してそうなサイト>init.elをOrg Fileから生成してそうなサイト</h4>
+<ul>
+<li><a href=https://takaxp.github.io/init.html>https://takaxp.github.io/init.html</a></li>
+<li><a href=https://www.grugrut.net/posts/my-emacs-init-el/>https://www.grugrut.net/posts/my-emacs-init-el/</a></li>
+<li><a href=https://mugijiru.github.io/.emacs.d/basics/custom-file/>https://mugijiru.github.io/.emacs.d/basics/custom-file/</a></li>
+</ul>
+<h4 id=example-doom-emacs実装>example: Doom Emacs実装</h4>
+<p>わたしの場合，Doom Emacsをつかっている(2022現在)ので，init.elではなくconfig.elに設定を追加.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-emacs-lisp data-lang=emacs-lisp>(require <span style=color:#e6db74>&#39;org-install</span>)
+(org-babel-load-file <span style=color:#e6db74>&#34;~/.doom.d/hekireki.org&#34;</span>)
+</code></pre></div><h4 id=参照>参照</h4>
+<p>現在のわたしの設定: <a href=https://futurismo.biz/fshort/hekireki>⚡My Emacs Config - 霹靂一閃</a></p>
+<p>以前，babel-loaderをつかってOrg fileを細かく分割して管理していたが，カオスになったのでゴミ箱に捨てました.</p>
+<ul>
+<li><a href=https://futurismo.biz/archives/6057/>🖊babel-loader:org-mode で init.el を管理する方法 | Futurismo</a></li>
+<li><a href=https://github.com/tsu-nera/dotfiles/tree/master/.emacs.d>https://github.com/tsu-nera/dotfiles/tree/master/.emacs.d</a></li>
+</ul>
+</div>
+<footer class=entry__footer>
+<div class=entry__tags>
+<a class="entry__tag btn" href=/keido/tags/wiki/>WIKI</a>
+</div>
+</footer>
+</article>
+</div>
+</main>
+</div>
+<footer class=footer>
+<div class=footer__copyright>© 2022 Keido. <span class=footer__copyright-credits>Powered by <a href=https://gohugo.io/ rel="nofollow noopener" target=_blank>Hugo</a> and <a href=https://github.com/vimux/binario rel="nofollow noopener" target=_blank>Binario</a> theme.</span></div>
+</footer>
+</body>
+</html>

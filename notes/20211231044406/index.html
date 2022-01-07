@@ -1,0 +1,51 @@
+<!doctype html><html class=no-js lang=ja>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=theme-color content="#1b1b1b">
+<title>📝ox-hugo | Keido</title>
+<script>(function(a,b){a[b]=a[b].replace("no-js","js")})(document.documentElement,"className")</script>
+<meta name=description content>
+<link rel=stylesheet href=/keido/css/bundle.css>
+<link rel=stylesheet href=/keido/css/themes/dark-red.css>
+<link rel=icon href=/keido/icons/16.png sizes=16x16 type=image/png>
+<link rel=icon href=/keido/icons/32.png sizes=32x32 type=image/png>
+</head>
+<body class="body kind-page">
+<header class=header>
+<a class=logo href=/keido/>Keido</a>
+</header>
+<div class=primary>
+<main class=main>
+<div class="single block">
+<article class=entry>
+<h1 class=entry__title>📝ox-hugo</h1>
+<div class=entry__content><p>Org-modeからHugoに適したMarkdownとfrontmatterを出力するためのEmacs Package.</p>
+<h2 id=ox-hugo-tips>ox-hugo Tips</h2>
+<h3 id=howot-exportをスキップする方法>howot: exportをスキップする方法</h3>
+<p>ref:
+<a href=https://ox-hugo.scripter.co/doc/tags-and-categories/#marking-files-to-not-be-exported>https://ox-hugo.scripter.co/doc/tags-and-categories/#marking-files-to-not-be-exported</a></p>
+<ul>
+<li>file baseでは，#+hugo_tags に noexport</li>
+<li>subtree baseでは，#+filetags に noexport</li>
+</ul>
+<h3 id=howto-ox-hugoで画像を記事に埋め込むには>howto: ox-hugoで画像を記事に埋め込むには?</h3>
+<p>ox-hugoは/staticをrootにして画像を探すので，パスは/staticからの相対パスで書く.</p>
+<p>ox-hugoはOrg fileに添付された画像をExportするときに自動でMarkdownファイルと同じディレクトリに配置してくれる.これは管理上とても楽である.</p>
+<p>参考: <a href=https://ox-hugo.scripter.co/doc/images-in-content/>Images in Content — ox-hugo - Org to Hugo exporter</a></p>
+</div>
+<footer class=entry__footer>
+<div class=entry__tags>
+<a class="entry__tag btn" href=/keido/tags/wiki/>WIKI</a>
+</div>
+</footer>
+</article>
+</div>
+</main>
+</div>
+<footer class=footer>
+<div class=footer__copyright>© 2022 Keido. <span class=footer__copyright-credits>Powered by <a href=https://gohugo.io/ rel="nofollow noopener" target=_blank>Hugo</a> and <a href=https://github.com/vimux/binario rel="nofollow noopener" target=_blank>Binario</a> theme.</span></div>
+</footer>
+</body>
+</html>
