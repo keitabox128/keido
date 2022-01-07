@@ -1,0 +1,159 @@
+<!doctype html><html lang=en dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Org-modeからHugoに適したMarkdownとfrontmatterを出力するためのEmacs Package.
+ox-hugo Tips #  howot: exportをスキップする方法 #  ref: https://ox-hugo.scripter.co/doc/tags-and-categories/#marking-files-to-not-be-exported
+ file baseでは，#+hugo_tags に noexport subtree baseでは，#+filetags に noexport  howto: ox-hugoで画像を記事に埋め込むには? #  ox-hugoは/staticをrootにして画像を探すので，パスは/staticからの相対パスで書く.
+ox-hugoはOrg fileに添付された画像をExportするときに自動でMarkdownファイルと同じディレクトリに配置してくれる.これは管理上とても楽である.
+参考: Images in Content — ox-hugo - Org to Hugo exporter">
+<meta name=theme-color content="#FFFFFF">
+<meta name=color-scheme content="light dark"><meta property="og:title" content="📝ox-hugo">
+<meta property="og:description" content="Org-modeからHugoに適したMarkdownとfrontmatterを出力するためのEmacs Package.
+ox-hugo Tips #  howot: exportをスキップする方法 #  ref: https://ox-hugo.scripter.co/doc/tags-and-categories/#marking-files-to-not-be-exported
+ file baseでは，#+hugo_tags に noexport subtree baseでは，#+filetags に noexport  howto: ox-hugoで画像を記事に埋め込むには? #  ox-hugoは/staticをrootにして画像を探すので，パスは/staticからの相対パスで書く.
+ox-hugoはOrg fileに添付された画像をExportするときに自動でMarkdownファイルと同じディレクトリに配置してくれる.これは管理上とても楽である.
+参考: Images in Content — ox-hugo - Org to Hugo exporter">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tsu-nera.github.io/keido/posts/20211231044406/"><meta property="article:section" content="posts">
+<meta property="article:modified_time" content="2022-01-07T22:08:21+09:00">
+<title>📝ox-hugo | Keido</title>
+<link rel=manifest href=/keido/manifest.json>
+<link rel=icon href=/keido/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/keido/book.min.89a77f7e702a8626749b948bbfb01109823daf6c1246ca407d1378833494c402.css integrity="sha256-iad/fnAqhiZ0m5SLv7ARCYI9r2wSRspAfRN4gzSUxAI=" crossorigin=anonymous>
+<script defer src=/keido/flexsearch.min.js></script>
+<script defer src=/keido/en.search.min.ded5b6f8c4515fc3b6678fe1e6a2eae5ca47b534475d2b45524e56477527b2cb.js integrity="sha256-3tW2+MRRX8O2Z4/h5qLq5cpHtTRHXStFUk5WR3Unsss=" crossorigin=anonymous></script>
+<script defer src=/keido/sw.min.edb1e35569175ecc6cce77320270b34445dcce196c7f7c9f17fd1197c30c2ae3.js integrity="sha256-7bHjVWkXXsxszncyAnCzREXczhlsf3yfF/0Rl8MMKuM=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/keido/><span>Keido</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li>
+<a href=https://github.com/alex-shpak/hugo-book target=_blank rel=noopener>
+Github
+</a>
+</li>
+<li>
+<a href=https://themes.gohugo.io/hugo-book/ target=_blank rel=noopener>
+Hugo Themes
+</a>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/keido/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>📝ox-hugo</strong>
+<label for=toc-control>
+<img src=/keido/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#ox-hugo-tips>ox-hugo Tips</a>
+<ul>
+<li><a href=#howot-exportをスキップする方法>howot: exportをスキップする方法</a></li>
+<li><a href=#howto-ox-hugoで画像を記事に埋め込むには>howto: ox-hugoで画像を記事に埋め込むには?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown>
+<h1>
+<a href=/keido/posts/20211231044406/>📝ox-hugo</a>
+</h1>
+<div>
+<a href=/keido/tags/WIKI/>WIKI</a>
+</div>
+<p>Org-modeからHugoに適したMarkdownとfrontmatterを出力するためのEmacs Package.</p>
+<h2 id=ox-hugo-tips>
+ox-hugo Tips
+<a class=anchor href=#ox-hugo-tips>#</a>
+</h2>
+<h3 id=howot-exportをスキップする方法>
+howot: exportをスキップする方法
+<a class=anchor href=#howot-export%e3%82%92%e3%82%b9%e3%82%ad%e3%83%83%e3%83%97%e3%81%99%e3%82%8b%e6%96%b9%e6%b3%95>#</a>
+</h3>
+<p>ref:
+<a href=https://ox-hugo.scripter.co/doc/tags-and-categories/#marking-files-to-not-be-exported>https://ox-hugo.scripter.co/doc/tags-and-categories/#marking-files-to-not-be-exported</a></p>
+<ul>
+<li>file baseでは，#+hugo_tags に noexport</li>
+<li>subtree baseでは，#+filetags に noexport</li>
+</ul>
+<h3 id=howto-ox-hugoで画像を記事に埋め込むには>
+howto: ox-hugoで画像を記事に埋め込むには?
+<a class=anchor href=#howto-ox-hugo%e3%81%a7%e7%94%bb%e5%83%8f%e3%82%92%e8%a8%98%e4%ba%8b%e3%81%ab%e5%9f%8b%e3%82%81%e8%be%bc%e3%82%80%e3%81%ab%e3%81%af>#</a>
+</h3>
+<p>ox-hugoは/staticをrootにして画像を探すので，パスは/staticからの相対パスで書く.</p>
+<p>ox-hugoはOrg fileに添付された画像をExportするときに自動でMarkdownファイルと同じディレクトリに配置してくれる.これは管理上とても楽である.</p>
+<p>参考:
+<a href=https://ox-hugo.scripter.co/doc/images-in-content/>Images in Content — ox-hugo - Org to Hugo exporter</a></p>
+</article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+<div><a class="flex align-center" href=https://github.com/tsu-nera/keido/commit/666833af1381f1a6a2f37814560a3bb591513e81 title="Last modified by tsu-nera | January 7, 2022" target=_blank rel=noopener>
+<img src=/keido/svg/calendar.svg class=book-icon alt=Calendar>
+<span>January 7, 2022</span>
+</a>
+</div>
+<div>
+<a class="flex align-center" href=https://github.com/tsu-nera/keido/edit/main/exampleSite/content/posts/20211231044406.md target=_blank rel=noopener>
+<img src=/keido/svg/edit.svg class=book-icon alt=Edit>
+<span>Edit this page</span>
+</a>
+</div>
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#ox-hugo-tips>ox-hugo Tips</a>
+<ul>
+<li><a href=#howot-exportをスキップする方法>howot: exportをスキップする方法</a></li>
+<li><a href=#howto-ox-hugoで画像を記事に埋め込むには>howto: ox-hugoで画像を記事に埋め込むには?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>

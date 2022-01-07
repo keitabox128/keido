@@ -1,0 +1,186 @@
+<!doctype html><html lang=en dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Org-capture #  howto: Google Chomeの閲覧内容をorg-captureするには? #   org-protocol と Chrome ExtentionのOrg Capture を利用する.
+仕組みとしては，Chromeにインストールした拡張機能がorg-protocolというMIME type(アプリケーションを識別する体系)を発行するので，それをemacsclientで受け取って処理をする.
+具体的にはemacslicentのデスクトップアプリケーションを作成して，org-protocolを処理するデフォルトアプリケーションでそのアプリケーションを指定.
+Manjaro Linuxの例(xfce) #  ~/.local/share/applications/emacsclient.desktop作成
+[Desktop Entry] Name=Emacsclient Exec=emacsclient %u Icon=emacs Type=Application Terminal=false MimeType=x-scheme-handler/org-protocol ~/.config/mimeapps.listに x-scheme-handler/org-protocol=emacsclient.desktop を追記.
+update-desktop-databbaseをコマンドラインから実行.
+org-captureの設定例.
+(&#34;p&#34; &#34;browser&#34; entry (file &#34;~/gtd/inbox/inbox.org&#34;) &#34;* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%:initial\n#+END_QUOTE\n\n\n%?&#34;) (&#34;L&#34; &#34;browser link&#34; entry (file &#34;~/gtd/inbox/inbox.org&#34;) &#34;* %? [[%:link][%:description]] \nCaptured On: %U&#34;) ポイントはorg-captureのトリガキーをpとLにすること.これはorg-capture-extensionなのでこれを守らないと動かない.もしくは自分でブックマークレットを作成する.
+learn more
+  Org-Protocol  XDG MIME Applications - ArchWiki  https://github.">
+<meta name=theme-color content="#FFFFFF">
+<meta name=color-scheme content="light dark"><meta property="og:title" content="📝Org-mode">
+<meta property="og:description" content="Org-capture #  howto: Google Chomeの閲覧内容をorg-captureするには? #   org-protocol と Chrome ExtentionのOrg Capture を利用する.
+仕組みとしては，Chromeにインストールした拡張機能がorg-protocolというMIME type(アプリケーションを識別する体系)を発行するので，それをemacsclientで受け取って処理をする.
+具体的にはemacslicentのデスクトップアプリケーションを作成して，org-protocolを処理するデフォルトアプリケーションでそのアプリケーションを指定.
+Manjaro Linuxの例(xfce) #  ~/.local/share/applications/emacsclient.desktop作成
+[Desktop Entry] Name=Emacsclient Exec=emacsclient %u Icon=emacs Type=Application Terminal=false MimeType=x-scheme-handler/org-protocol ~/.config/mimeapps.listに x-scheme-handler/org-protocol=emacsclient.desktop を追記.
+update-desktop-databbaseをコマンドラインから実行.
+org-captureの設定例.
+(&#34;p&#34; &#34;browser&#34; entry (file &#34;~/gtd/inbox/inbox.org&#34;) &#34;* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%:initial\n#+END_QUOTE\n\n\n%?&#34;) (&#34;L&#34; &#34;browser link&#34; entry (file &#34;~/gtd/inbox/inbox.org&#34;) &#34;* %? [[%:link][%:description]] \nCaptured On: %U&#34;) ポイントはorg-captureのトリガキーをpとLにすること.これはorg-capture-extensionなのでこれを守らないと動かない.もしくは自分でブックマークレットを作成する.
+learn more
+  Org-Protocol  XDG MIME Applications - ArchWiki  https://github.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tsu-nera.github.io/keido/posts/20211211071525/"><meta property="article:section" content="posts">
+<meta property="article:modified_time" content="2022-01-07T22:08:21+09:00">
+<title>📝Org-mode | Keido</title>
+<link rel=manifest href=/keido/manifest.json>
+<link rel=icon href=/keido/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/keido/book.min.89a77f7e702a8626749b948bbfb01109823daf6c1246ca407d1378833494c402.css integrity="sha256-iad/fnAqhiZ0m5SLv7ARCYI9r2wSRspAfRN4gzSUxAI=" crossorigin=anonymous>
+<script defer src=/keido/flexsearch.min.js></script>
+<script defer src=/keido/en.search.min.ded5b6f8c4515fc3b6678fe1e6a2eae5ca47b534475d2b45524e56477527b2cb.js integrity="sha256-3tW2+MRRX8O2Z4/h5qLq5cpHtTRHXStFUk5WR3Unsss=" crossorigin=anonymous></script>
+<script defer src=/keido/sw.min.edb1e35569175ecc6cce77320270b34445dcce196c7f7c9f17fd1197c30c2ae3.js integrity="sha256-7bHjVWkXXsxszncyAnCzREXczhlsf3yfF/0Rl8MMKuM=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/keido/><span>Keido</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li>
+<a href=https://github.com/alex-shpak/hugo-book target=_blank rel=noopener>
+Github
+</a>
+</li>
+<li>
+<a href=https://themes.gohugo.io/hugo-book/ target=_blank rel=noopener>
+Hugo Themes
+</a>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/keido/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>📝Org-mode</strong>
+<label for=toc-control>
+<img src=/keido/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#org-capture>Org-capture</a>
+<ul>
+<li><a href=#howto-google-chomeの閲覧内容をorg-captureするには>howto: Google Chomeの閲覧内容をorg-captureするには?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown>
+<h1>
+<a href=/keido/posts/20211211071525/>📝Org-mode</a>
+</h1>
+<div>
+<a href=/keido/tags/WIKI/>WIKI</a>
+</div>
+<h2 id=org-capture>
+Org-capture
+<a class=anchor href=#org-capture>#</a>
+</h2>
+<h3 id=howto-google-chomeの閲覧内容をorg-captureするには>
+howto: Google Chomeの閲覧内容をorg-captureするには?
+<a class=anchor href=#howto-google-chome%e3%81%ae%e9%96%b2%e8%a6%a7%e5%86%85%e5%ae%b9%e3%82%92org-capture%e3%81%99%e3%82%8b%e3%81%ab%e3%81%af>#</a>
+</h3>
+<p>
+<a href=https://orgmode.org/worg/org-contrib/org-protocol.html>org-protocol</a> と
+<a href=https://chrome.google.com/webstore/detail/org-capture/kkkjlfejijcjgjllecmnejhogpbcigdc>Chrome ExtentionのOrg Capture</a> を利用する.</p>
+<p>仕組みとしては，Chromeにインストールした拡張機能がorg-protocolというMIME type(アプリケーションを識別する体系)を発行するので，それをemacsclientで受け取って処理をする.</p>
+<p>具体的にはemacslicentのデスクトップアプリケーションを作成して，org-protocolを処理するデフォルトアプリケーションでそのアプリケーションを指定.</p>
+<h4 id=manjaro-linuxの例--xfce>
+Manjaro Linuxの例(xfce)
+<a class=anchor href=#manjaro-linux%e3%81%ae%e4%be%8b--xfce>#</a>
+</h4>
+<p>~/.local/share/applications/emacsclient.desktop作成</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>[Desktop Entry]
+Name=Emacsclient
+Exec=emacsclient %u
+Icon=emacs
+Type=Application
+Terminal=false
+MimeType=x-scheme-handler/org-protocol
+</code></pre></div><p>~/.config/mimeapps.listに x-scheme-handler/org-protocol=emacsclient.desktop を追記.</p>
+<p>update-desktop-databbaseをコマンドラインから実行.</p>
+<p>org-captureの設定例.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-emacs-lisp data-lang=emacs-lisp>(<span style=color:#e6db74>&#34;p&#34;</span> <span style=color:#e6db74>&#34;browser&#34;</span> entry (file <span style=color:#e6db74>&#34;~/gtd/inbox/inbox.org&#34;</span>)
+ <span style=color:#e6db74>&#34;* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%:initial\n#+END_QUOTE\n\n\n%?&#34;</span>)
+(<span style=color:#e6db74>&#34;L&#34;</span> <span style=color:#e6db74>&#34;browser link&#34;</span> entry (file <span style=color:#e6db74>&#34;~/gtd/inbox/inbox.org&#34;</span>)
+ <span style=color:#e6db74>&#34;* %? [[%:link][%:description]] \nCaptured On: %U&#34;</span>)
+</code></pre></div><p>ポイントはorg-captureのトリガキーをpとLにすること.これはorg-capture-extensionなのでこれを守らないと動かない.もしくは自分でブックマークレットを作成する.</p>
+<p>learn more</p>
+<ul>
+<li>
+<a href=https://jingsi.space/post/2017/04/30/org-protocol/>Org-Protocol</a></li>
+<li>
+<a href=https://wiki.archlinux.org/title/XDG%5FMIME%5FApplications#fromHistory>XDG MIME Applications - ArchWiki</a></li>
+<li>
+<a href=https://github.com/sprig/org-capture-extension>https://github.com/sprig/org-capture-extension</a></li>
+</ul>
+</article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+<div><a class="flex align-center" href=https://github.com/tsu-nera/keido/commit/666833af1381f1a6a2f37814560a3bb591513e81 title="Last modified by tsu-nera | January 7, 2022" target=_blank rel=noopener>
+<img src=/keido/svg/calendar.svg class=book-icon alt=Calendar>
+<span>January 7, 2022</span>
+</a>
+</div>
+<div>
+<a class="flex align-center" href=https://github.com/tsu-nera/keido/edit/main/exampleSite/content/posts/20211211071525.md target=_blank rel=noopener>
+<img src=/keido/svg/edit.svg class=book-icon alt=Edit>
+<span>Edit this page</span>
+</a>
+</div>
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#org-capture>Org-capture</a>
+<ul>
+<li><a href=#howto-google-chomeの閲覧内容をorg-captureするには>howto: Google Chomeの閲覧内容をorg-captureするには?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>
