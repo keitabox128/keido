@@ -1,0 +1,1076 @@
+<!doctype html><html lang=en class=color-toggle-hidden>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=color-scheme content="light dark">
+<meta name=description content="Emacsの呼吸壱ノ型, 霹靂一閃.
+packageの並び順は Doom Emacs の Molule Index (アルファベット順)に従う.
+ref: https://github.com/tsu-nera/hekireki
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*- App    Twitter    ;; App ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ;; twittering-mode ;; この設定がないと認証が失敗した. ;; twittering-oauth-get-access-token: Failed to retrieve a request token (add-hook! 'twittering-mode-hook (setq twittering-allow-insecure-server-cert t)) eww    Emacsのテキストブラウザ(Manual)
+notes:
+ ewwを起動しただけだとminibufferなのでC-gで消えてしまうので大きくC-x 1とかで大きくする. C-u M-x ewwでひとつのbufferを使いまわすのではなく別のBufferでewwを開く. M-RETでURLを新しいBufferで開く. Doom EmacsだとC-c s o(online)でいろいろと検索できる(w/Chrome). helm-google-suggest的な.   (use-package! eww :bind (&#34;C-c s w&#34; .">
+<title>⚡My Emacs Config - 霹靂一閃 | Keido</title>
+<link rel=icon type=image/svg+xml href=/keido/favicon/favicon.svg>
+<link rel=icon type=image/png sizes=32x32 href=/keido/favicon/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/keido/favicon/favicon-16x16.png>
+<meta property="og:title" content="⚡My Emacs Config - 霹靂一閃">
+<meta property="og:description" content="Emacsの呼吸壱ノ型, 霹靂一閃.
+packageの並び順は Doom Emacs の Molule Index (アルファベット順)に従う.
+ref: https://github.com/tsu-nera/hekireki
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*- App    Twitter    ;; App ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ;; twittering-mode ;; この設定がないと認証が失敗した. ;; twittering-oauth-get-access-token: Failed to retrieve a request token (add-hook! 'twittering-mode-hook (setq twittering-allow-insecure-server-cert t)) eww    Emacsのテキストブラウザ(Manual)
+notes:
+ ewwを起動しただけだとminibufferなのでC-gで消えてしまうので大きくC-x 1とかで大きくする. C-u M-x ewwでひとつのbufferを使いまわすのではなく別のBufferでewwを開く. M-RETでURLを新しいBufferで開く. Doom EmacsだとC-c s o(online)でいろいろと検索できる(w/Chrome). helm-google-suggest的な.   (use-package! eww :bind (&#34;C-c s w&#34; .">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tsu-nera.github.io/keido/notes/hekireki/"><meta property="article:section" content="notes">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="⚡My Emacs Config - 霹靂一閃">
+<meta name=twitter:description content="Emacsの呼吸壱ノ型, 霹靂一閃.
+packageの並び順は Doom Emacs の Molule Index (アルファベット順)に従う.
+ref: https://github.com/tsu-nera/hekireki
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*- App    Twitter    ;; App ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ;; twittering-mode ;; この設定がないと認証が失敗した. ;; twittering-oauth-get-access-token: Failed to retrieve a request token (add-hook! 'twittering-mode-hook (setq twittering-allow-insecure-server-cert t)) eww    Emacsのテキストブラウザ(Manual)
+notes:
+ ewwを起動しただけだとminibufferなのでC-gで消えてしまうので大きくC-x 1とかで大きくする. C-u M-x ewwでひとつのbufferを使いまわすのではなく別のBufferでewwを開く. M-RETでURLを新しいBufferで開く. Doom EmacsだとC-c s o(online)でいろいろと検索できる(w/Chrome). helm-google-suggest的な.   (use-package! eww :bind (&#34;C-c s w&#34; .">
+<script src=/keido/js/darkmode-ce906ea916.min.js></script>
+<link rel=preload as=font href=/keido/fonts/Metropolis.woff2 type=font/woff2 crossorigin=anonymous>
+<link rel=preload as=font href=/keido/fonts/LiberationSans.woff2 type=font/woff2 crossorigin=anonymous>
+<link rel=preload href=/keido/main-f2bda721b7.min.css as=style>
+<link rel=stylesheet href=/keido/main-f2bda721b7.min.css media=all>
+<link rel=preload href=/keido/mobile-e59e15242a.min.css as=style>
+<link rel=stylesheet href=/keido/mobile-e59e15242a.min.css media="screen and (max-width: 45rem)">
+<link rel=preload href=/keido/print-f79fc3e5d7.min.css as=style>
+<link rel=stylesheet href=/keido/print-f79fc3e5d7.min.css media=print>
+<link rel=preload href=/keido/custom.css as=style>
+<link rel=stylesheet href=/keido/custom.css media=all>
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"TechArticle","articleSection":"notes","name":"⚡My Emacs Config - 霹靂一閃","headline":"⚡My Emacs Config - 霹靂一閃","alternativeHeadline":"","description":"Emacsの呼吸壱ノ型, 霹靂一閃.\npackageの並び順は Doom Emacs の Molule Index (アルファベット順)に従う.\nref: https:\/\/github.com\/tsu-nera\/hekireki\n;;; $DOOMDIR\/config.el -*- lexical-binding: t; -*- App    Twitter    ;; App ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ;; twittering-mode ;; この設定がないと認証が失敗した. ;; twittering-oauth-get-access-token: Failed to retrieve a request token (add-hook! \u0026#39;twittering-mode-hook (setq twittering-allow-insecure-server-cert t)) eww    Emacsのテキストブラウザ(Manual)\nnotes:\n ewwを起動しただけだとminibufferなのでC-gで消えてしまうので大きくC-x 1とかで大きくする. C-u M-x ewwでひとつのbufferを使いまわすのではなく別のBufferでewwを開く. M-RETでURLを新しいBufferで開く. Doom EmacsだとC-c s o(online)でいろいろと検索できる(w\/Chrome). helm-google-suggest的な.   (use-package! eww :bind (\u0026#34;C-c s w\u0026#34; .","inLanguage":"en","isFamilyFriendly":"true","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/tsu-nera.github.io\/keido\/notes\/hekireki\/"},"copyrightHolder":"Keido","copyrightYear":"0001","dateCreated":"0001-01-01T00:00:00.00Z","datePublished":"0001-01-01T00:00:00.00Z","dateModified":"0001-01-01T00:00:00.00Z","publisher":{"@type":"Organization","name":"Keido","url":"https://tsu-nera.github.io/keido/","logo":{"@type":"ImageObject","url":"https:\/\/tsu-nera.github.io\/keido\/brand.svg","width":"32","height":"32"}},"url":"https:\/\/tsu-nera.github.io\/keido\/notes\/hekireki\/","wordCount":"2171","genre":[]}</script>
+</head>
+<body itemscope itemtype=https://schema.org/WebPage><svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol viewBox="-2.29 -2.29 28.57 28.57" id="gdoc_arrow_back" xmlns="http://www.w3.org/2000/svg"><path d="M24 10.526v2.947H5.755l8.351 8.421-2.105 2.105-12-12 12-12 2.105 2.105-8.351 8.421H24z"/></symbol><symbol viewBox="-2.29 -2.29 28.57 28.57" id="gdoc_arrow_left_alt" xmlns="http://www.w3.org/2000/svg"><path d="M5.965 10.526V6.035L0 12l5.965 5.965v-4.491H24v-2.947H5.965z"/></symbol><symbol viewBox="-2.29 -2.29 28.57 28.57" id="gdoc_arrow_right_alt" xmlns="http://www.w3.org/2000/svg"><path d="M18.035 10.526V6.035L24 12l-5.965 5.965v-4.491H0v-2.947h18.035z"/></symbol><symbol viewBox="-2.29 -2.29 32.57 32.57" id="gdoc_bitbucket" xmlns="http://www.w3.org/2000/svg"><path d="M15.905 13.355c.189 1.444-1.564 2.578-2.784 1.839-1.375-.602-1.375-2.784-.034-3.403 1.151-.705 2.818.223 2.818 1.564zm1.907-.361c-.309-2.44-3.076-4.056-5.328-3.042-1.426.636-2.389 2.148-2.32 3.747.086 2.097 2.08 3.815 4.176 3.626s3.729-2.234 3.472-4.331zm4.108-9.315c-.756-.997-2.045-1.169-3.179-1.358-3.214-.516-6.513-.533-9.727.034-1.066.172-2.269.361-2.939 1.323 1.1 1.031 2.664 1.186 4.073 1.358 2.544.327 5.156.344 7.699.017 1.426-.172 3.008-.309 4.073-1.375zm.979 17.788c-.481 1.684-.206 3.953-1.994 4.932-3.076 1.701-6.806 1.89-10.191 1.289-1.787-.327-3.884-.894-4.864-2.578-.43-1.65-.705-3.334-.98-5.018l.103-.275.309-.155c5.121 3.386 12.288 3.386 17.427.0.808.241.206 1.22.189 1.805zM26.01 4.951c-.584 3.764-1.255 7.51-1.908 11.257-.189 1.1-1.255 1.719-2.148 2.183-3.214 1.615-6.96 1.89-10.483 1.512-2.389-.258-4.829-.894-6.771-2.389-.911-.705-.911-1.908-1.083-2.922-.602-3.523-1.289-7.046-1.719-10.604.206-1.547 1.942-2.217 3.231-2.698C6.848.654 8.686.362 10.508.19c3.884-.378 7.854-.241 11.618.859 1.341.395 2.784.945 3.695 2.097.412.533.275 1.203.189 1.805z"/></symbol><symbol viewBox="-2.29 -2.29 28.57 28.57" id="gdoc_bookmark" xmlns="http://www.w3.org/2000/svg"><path d="M15.268 4.392q.868.0 1.532.638t.664 1.506v17.463l-7.659-3.268-7.608 3.268V6.536q0-.868.664-1.506t1.532-.638h10.876zm4.34 14.144V4.392q0-.868-.638-1.532t-1.506-.664H6.537q0-.868.664-1.532T8.733.0h10.876q.868.0 1.532.664t.664 1.532v17.412z"/></symbol><symbol viewBox="-2.29 -2.29 32.57 32.57" id="gdoc_brightness_auto" xmlns="http://www.w3.org/2000/svg"><path d="M16.846 18.938h2.382L15.22 7.785h-2.44L8.772 18.938h2.382l.871-2.44h3.95zm7.087-9.062L27.999 14l-4.066 4.124v5.809h-5.809L14 27.999l-4.124-4.066H4.067v-5.809L.001 14l4.066-4.124V4.067h5.809L14 .001l4.124 4.066h5.809v5.809zm-11.385 4.937L14 10.282l1.452 4.531h-2.904z"/></symbol><symbol viewBox="-2.29 -2.29 32.57 32.57" id="gdoc_brightness_dark" xmlns="http://www.w3.org/2000/svg"><path d="M14 21.435q3.079.0 5.257-2.178T21.435 14t-2.178-5.257T14 6.565q-1.51.0-3.079.697 1.917.871 3.108 2.701T15.22 14t-1.191 4.037-3.108 2.701q1.568.697 3.079.697zm9.933-11.559L27.999 14l-4.066 4.124v5.809h-5.809L14 27.999l-4.124-4.066H4.067v-5.809L.001 14l4.066-4.124V4.067h5.809L14 .001l4.124 4.066h5.809v5.809z"/></symbol><symbol viewBox="-2.29 -2.29 32.57 32.57" id="gdoc_brightness_light" xmlns="http://www.w3.org/2000/svg"><path d="M14 21.435q3.079.0 5.257-2.178T21.435 14t-2.178-5.257T14 6.565 8.743 8.743 6.565 14t2.178 5.257T14 21.435zm9.933-3.311v5.809h-5.809L14 27.999l-4.124-4.066H4.067v-5.809L.001 14l4.066-4.124V4.067h5.809L14 .001l4.124 4.066h5.809v5.809L27.999 14z"/></symbol><symbol viewBox="-2.29 -2.29 32.57 32.57" id="gdoc_check" xmlns="http://www.w3.org/2000/svg"><path d="M8.885 20.197 25.759 3.323l2.24 2.24L8.885 24.677.0 15.792l2.24-2.24z"/></symbol><symbol viewBox="-2.29 -2.29 32.57 32.57" id="gdoc_cloud_off" xmlns="http://www.w3.org/2000/svg"><path d="M9.023 10.5H7q-1.914.0-3.281 1.395t-1.367 3.309 1.367 3.281T7 19.852h11.375zM3.5 4.976l1.477-1.477L24.5 23.022l-1.477 1.477-2.352-2.297H6.999q-2.898.0-4.949-2.051t-2.051-4.949q0-2.844 1.969-4.867t4.758-2.133zm19.086 5.578q2.242.164 3.828 1.832T28 16.351q0 3.008-2.461 4.758l-1.695-1.695q1.805-.984 1.805-3.063.0-1.422-1.039-2.461t-2.461-1.039h-1.75v-.602q0-2.68-1.859-4.539t-4.539-1.859q-1.531.0-2.953.711l-1.75-1.695Q11.431 3.5 14.001 3.5q2.953.0 5.496 2.078t3.09 4.977z"/></symbol><symbol viewBox="-2.29 -2.29 32.57 32.57" id="gdoc_code" xmlns="http://www.w3.org/2000/svg"><path d="M9.917 24.5a1.75 1.75.0 10-3.501.001 1.75 1.75.0 003.501-.001zm0-21a1.75 1.75.0 10-3.501.001A1.75 1.75.0 009.917 3.5zm11.666 2.333a1.75 1.75.0 10-3.501.001 1.75 1.75.0 003.501-.001zm1.75.0a3.502 3.502.0 01-1.75 3.026c-.055 6.581-4.721 8.039-7.82 9.023-2.898.911-3.846 1.349-3.846 3.117v.474a3.502 3.502.0 011.75 3.026c0 1.932-1.568 3.5-3.5 3.5s-3.5-1.568-3.5-3.5c0-1.294.711-2.424 1.75-3.026V6.526A3.502 3.502.0 014.667 3.5c0-1.932 1.568-3.5 3.5-3.5s3.5 1.568 3.5 3.5a3.502 3.502.0 01-1.75 3.026v9.06c.93-.456 1.914-.766 2.807-1.039 3.391-1.075 5.323-1.878 5.359-5.687a3.502 3.502.0 01-1.75-3.026c0-1.932 1.568-3.5 3.5-3.5s3.5 1.568 3.5 3.5z"/></symbol><symbol viewBox="-2.29 -2.29 32.57 32.57" id="gdoc_copy" xmlns="http://www.w3.org/2000/svg"><path d="M23.502 25.438V7.626H9.562v17.812h13.94zm0-20.315q1.013.0 1.787.745t.774 1.757v17.812q0 1.013-.774 1.787t-1.787.774H9.562q-1.013.0-1.787-.774t-.774-1.787V7.625q0-1.013.774-1.757t1.787-.745h13.94zM19.689.0v2.562H4.438v17.812H1.936V2.562q0-1.013.745-1.787T4.438.001h15.251z"/></symbol><symbol viewBox="-2.29 -2.29 36.57 36.57" id="gdoc_date" xmlns="http://www.w3.org/2000/svg"><path d="M27.192 28.844V11.192H4.808v17.652h22.384zm0-25.689q1.277.0 2.253.976t.976 2.253v22.459q0 1.277-.976 2.216t-2.253.939H4.808q-1.352.0-2.291-.901t-.939-2.253V6.385q0-1.277.939-2.253t2.291-.976h1.577V.001h3.23v3.155h12.769V.001h3.23v3.155h1.577zm-3.155 11.267v3.155h-3.23v-3.155h3.23zm-6.46.0v3.155h-3.155v-3.155h3.155zm-6.384.0v3.155h-3.23v-3.155h3.23z"/></symbol><symbol viewBox="-2.29 -2.29 36.57 36.57" id="gdoc_download" xmlns="http://www.w3.org/2000/svg"><path d="M2.866 28.209h26.269v3.79H2.866v-3.79zm26.268-16.925L16 24.418 2.866 11.284h7.493V.001h11.283v11.283h7.493z"/></symbol><symbol viewBox="-2.29 -2.29 36.57 36.57" id="gdoc_email" xmlns="http://www.w3.org/2000/svg"><path d="M28.845 9.615v-3.23L16 14.422 3.155 6.385v3.23L16 17.577zm0-6.46q1.277.0 2.216.977T32 6.385v19.23q0 1.277-.939 2.253t-2.216.977H3.155q-1.277.0-2.216-.977T0 25.615V6.385q0-1.277.939-2.253t2.216-.977h25.69z"/></symbol><symbol viewBox="-2.29 -2.29 32.57 32.57" id="gdoc_git" xmlns="http://www.w3.org/2000/svg"><path d="M27.472 12.753 15.247.529a1.803 1.803.0 00-2.55.0l-2.84 2.84 2.137 2.137a2.625 2.625.0 013.501 3.501l3.499 3.499a2.625 2.625.0 11-1.237 1.237l-3.499-3.499c-.083.04-.169.075-.257.106v7.3a2.626 2.626.0 11-1.75.0v-7.3a2.626 2.626.0 01-1.494-3.607L8.62 4.606l-8.09 8.09a1.805 1.805.0 000 2.551l12.225 12.224a1.803 1.803.0 002.55.0l12.168-12.168a1.805 1.805.0 000-2.551z"/></symbol><symbol viewBox="-2.29 -2.29 36.57 36.57" id="gdoc_github" xmlns="http://www.w3.org/2000/svg"><path d="M16 .394c8.833.0 15.999 7.166 15.999 15.999.0 7.062-4.583 13.062-10.937 15.187-.813.146-1.104-.354-1.104-.771.0-.521.021-2.25.021-4.396.0-1.5-.5-2.458-1.083-2.958 3.562-.396 7.312-1.75 7.312-7.896.0-1.75-.625-3.167-1.646-4.291.167-.417.708-2.042-.167-4.25-1.333-.417-4.396 1.646-4.396 1.646a15.032 15.032.0 00-8 0S8.937 6.602 7.603 7.018c-.875 2.208-.333 3.833-.167 4.25-1.021 1.125-1.646 2.542-1.646 4.291.0 6.125 3.729 7.5 7.291 7.896-.458.417-.875 1.125-1.021 2.146-.917.417-3.25 1.125-4.646-1.333-.875-1.521-2.458-1.646-2.458-1.646-1.562-.021-.104.979-.104.979 1.042.479 1.771 2.333 1.771 2.333.938 2.854 5.396 1.896 5.396 1.896.0 1.333.021 2.583.021 2.979.0.417-.292.917-1.104.771C4.582 29.455-.001 23.455-.001 16.393-.001 7.56 7.165.394 15.998.394zM6.063 23.372c.042-.083-.021-.187-.146-.25-.125-.042-.229-.021-.271.042-.042.083.021.187.146.25.104.062.229.042.271-.042zm.646.709c.083-.062.062-.208-.042-.333-.104-.104-.25-.146-.333-.062-.083.062-.062.208.042.333.104.104.25.146.333.062zm.625.937c.104-.083.104-.25.0-.396-.083-.146-.25-.208-.354-.125-.104.062-.104.229.0.375s.271.208.354.146zm.875.875c.083-.083.042-.271-.083-.396-.146-.146-.333-.167-.417-.062-.104.083-.062.271.083.396.146.146.333.167.417.062zm1.187.521c.042-.125-.083-.271-.271-.333-.167-.042-.354.021-.396.146s.083.271.271.312c.167.062.354.0.396-.125zm1.313.104c0-.146-.167-.25-.354-.229-.187.0-.333.104-.333.229.0.146.146.25.354.229.187.0.333-.104.333-.229zm1.208-.208c-.021-.125-.187-.208-.375-.187-.187.042-.312.167-.292.312.021.125.187.208.375.167s.312-.167.292-.292z"/></symbol><symbol viewBox="-2.29 -2.29 32.57 32.57" id="gdoc_gitlab" xmlns="http://www.w3.org/2000/svg"><path d="M1.629 11.034 14 26.888.442 17.048a1.09 1.09.0 01-.39-1.203l1.578-4.811zm7.217.0h10.309l-5.154 15.854zM5.753 1.475l3.093 9.559H1.63l3.093-9.559a.548.548.0 011.031.0zm20.618 9.559 1.578 4.811c.141.437-.016.922-.39 1.203l-13.558 9.84 12.371-15.854zm0 0h-7.216l3.093-9.559a.548.548.0 011.031.0z"/></symbol><symbol viewBox="-2.29 -2.29 36.57 36.57" id="gdoc_heart" xmlns="http://www.w3.org/2000/svg"><path d="M16 29.714a1.11 1.11.0 01-.786-.321L4.072 18.643c-.143-.125-4.071-3.714-4.071-8 0-5.232 3.196-8.357 8.535-8.357 3.125.0 6.053 2.464 7.464 3.857 1.411-1.393 4.339-3.857 7.464-3.857 5.339.0 8.535 3.125 8.535 8.357.0 4.286-3.928 7.875-4.089 8.035L16.785 29.392c-.214.214-.5.321-.786.321z"/></symbol><symbol viewBox="-2.29 -2.29 32.57 32.57" id="gdoc_home" xmlns="http://www.w3.org/2000/svg"><path d="M24.003 15.695v8.336c0 .608-.504 1.111-1.111 1.111h-6.669v-6.669h-4.446v6.669H5.108a1.119 1.119.0 01-1.111-1.111v-8.336c0-.035.017-.069.017-.104L14 7.359l9.986 8.232a.224.224.0 01.017.104zm3.873-1.198-1.077 1.285a.578.578.0 01-.365.191h-.052a.547.547.0 01-.365-.122L14 5.831 1.983 15.851a.594.594.0 01-.417.122.578.578.0 01-.365-.191L.124 14.497a.57.57.0 01.069-.781L12.679 3.314c.729-.608 1.91-.608 2.64.0l4.237 3.543V3.471c0-.313.243-.556.556-.556h3.334c.313.0.556.243.556.556v7.085l3.803 3.161c.226.191.26.556.069.781z"/></symbol><symbol viewBox="-2.29 -2.29 32.57 32.57" id="gdoc_keyborad_arrow_down" xmlns="http://www.w3.org/2000/svg"><path d="M3.281 5.36 14 16.079 24.719 5.36 28 8.641l-14 14-14-14z"/></symbol><symbol viewBox="-2.29 -2.29 36.57 36.57" id="gdoc_keyborad_arrow_left" xmlns="http://www.w3.org/2000/svg"><path d="M25.875 28.25 22.125 32 6.126 16.001 22.125.002l3.75 3.75-12.25 12.25z"/></symbol><symbol viewBox="-2.29 -2.29 36.57 36.57" id="gdoc_keyborad_arrow_right" xmlns="http://www.w3.org/2000/svg"><path d="M6.125 28.25 18.375 16 6.125 3.75 9.875.0l15.999 15.999L9.875 31.998z"/></symbol><symbol viewBox="-2.29 -2.29 32.57 32.57" id="gdoc_keyborad_arrow_up" xmlns="http://www.w3.org/2000/svg"><path d="M24.719 22.64 14 11.921 3.281 22.64.0 19.359l14-14 14 14z"/></symbol><symbol viewBox="-2.29 -2.29 36.57 36.57" id="gdoc_link" xmlns="http://www.w3.org/2000/svg"><path d="M24.037 7.963q3.305.0 5.634 2.366T32 16t-2.329 5.671-5.634 2.366h-6.46v-3.08h6.46q2.028.0 3.493-1.465t1.465-3.493-1.465-3.493-3.493-1.465h-6.46v-3.08h6.46zM9.615 17.578v-3.155h12.77v3.155H9.615zM3.005 16q0 2.028 1.465 3.493t3.493 1.465h6.46v3.08h-6.46q-3.305.0-5.634-2.366T0 16.001t2.329-5.671 5.634-2.366h6.46v3.08h-6.46q-2.028.0-3.493 1.465t-1.465 3.493z"/></symbol><symbol viewBox="-2.29 -2.29 36.57 36.57" id="gdoc_menu" xmlns="http://www.w3.org/2000/svg"><path d="M.001 5.334h31.998v3.583H.001V5.334zm0 12.416v-3.5h31.998v3.5H.001zm0 8.916v-3.583h31.998v3.583H.001z"/></symbol><symbol viewBox="-2.29 -2.29 32.57 32.57" id="gdoc_notification" xmlns="http://www.w3.org/2000/svg"><path d="M22.615 19.384l2.894 2.894v1.413H2.49v-1.413l2.894-2.894V12.25q0-3.365 1.716-5.856t4.745-3.231v-1.01q0-.875.606-1.514T13.999.0t1.548.639.606 1.514v1.01q3.029.74 4.745 3.231t1.716 5.856v7.134zM14 27.999q-1.211.0-2.053-.808t-.841-2.019h5.788q0 1.144-.875 1.986T14 27.999z"/></symbol><symbol viewBox="-2.29 -2.29 32.57 32.57" id="gdoc_path" xmlns="http://www.w3.org/2000/svg"><path d="M28 12.62h-9.793V8.414h-2.826v11.173h2.826v-4.206H28V26.62h-9.793v-4.206H12.62v-14H9.794v4.206H.001V1.381h9.793v4.206h8.413V1.381H28V12.62z"/></symbol><symbol viewBox="-2.29 -2.29 36.57 36.57" id="gdoc_person" xmlns="http://www.w3.org/2000/svg"><path d="M16 20.023q5.052.0 10.526 2.199t5.473 5.754v4.023H0v-4.023q0-3.555 5.473-5.754t10.526-2.199zM16 16q-3.275.0-5.614-2.339T8.047 8.047t2.339-5.661T16 0t5.614 2.386 2.339 5.661-2.339 5.614T16 16z"/></symbol><symbol viewBox="-2.29 -2.29 36.57 36.57" id="gdoc_search" xmlns="http://www.w3.org/2000/svg"><path d="M11.925 20.161q3.432.0 5.834-2.402t2.402-5.834-2.402-5.834-5.834-2.402-5.834 2.402-2.402 5.834 2.402 5.834 5.834 2.402zm10.981.0L32 29.255 29.255 32l-9.094-9.094v-1.458l-.515-.515q-3.26 2.831-7.721 2.831-4.976.0-8.45-3.432T.001 11.925t3.474-8.45 8.45-3.474 8.407 3.474 3.432 8.45q0 1.802-.858 4.075t-1.973 3.646l.515.515h1.458z"/></symbol><symbol viewBox="-2.29 -2.29 32.57 32.57" id="gdoc_shield" xmlns="http://www.w3.org/2000/svg"><path d="M22.167 15.166V3.5h-8.166v20.726c.93-.492 2.424-1.349 3.883-2.497 1.95-1.531 4.284-3.919 4.284-6.562zm3.499-13.999v14c0 7.674-10.737 12.523-11.192 12.724-.146.073-.31.109-.474.109s-.328-.036-.474-.109c-.456-.201-11.192-5.049-11.192-12.724v-14C2.334.529 2.863.0 3.501.0H24.5c.638.0 1.167.529 1.167 1.167z"/></symbol><symbol viewBox="-2.29 -2.29 32.57 32.57" id="gdoc_tags" xmlns="http://www.w3.org/2000/svg"><path d="M6.606 7.549c0-1.047-.84-1.887-1.887-1.887s-1.887.84-1.887 1.887.84 1.887 1.887 1.887 1.887-.84 1.887-1.887zm15.732 8.493c0 .501-.206.988-.546 1.327l-7.239 7.254c-.354.339-.84.546-1.342.546s-.988-.206-1.327-.546L1.342 14.066C.59 13.329.0 11.899.0 10.852V4.718a1.9 1.9.0 011.887-1.887h6.134c1.047.0 2.477.59 3.229 1.342L21.792 14.7c.339.354.546.84.546 1.342zm5.661.0c0 .501-.206.988-.546 1.327l-7.239 7.254c-.354.339-.84.546-1.342.546-.767.0-1.15-.354-1.651-.87l6.93-6.93c.339-.339.546-.826.546-1.327s-.206-.988-.546-1.342L13.609 4.173c-.752-.752-2.182-1.342-3.229-1.342h3.303c1.047.0 2.477.59 3.229 1.342L27.454 14.7c.339.354.546.84.546 1.342z"/></symbol><symbol viewBox="-2.29 -2.29 36.57 36.57" id="gdoc_timer" xmlns="http://www.w3.org/2000/svg"><path d="M16 29q4.428.0 7.536-3.143t3.107-7.571-3.107-7.536T16 7.643 8.464 10.75t-3.107 7.536 3.107 7.571T16 29zM26.714 9.786q1.214 1.571 2.107 4.036t.893 4.464q0 5.643-4 9.678T16 32t-9.714-4.036-4-9.678 4-9.678T16 4.572q1.929.0 4.464.929t4.107 2.143l2.143-2.214q1.143.929 2.143 2.143zM14.5 19.857v-9.143h3v9.143h-3zM20.571.001v3.071h-9.143V.001h9.143z"/></symbol></svg>
+<div class=wrapper>
+<input type=checkbox class=hidden id=menu-control>
+<input type=checkbox class=hidden id=menu-header-control>
+<header class=gdoc-header>
+<div class="container flex align-center justify-between">
+<label for=menu-control class=gdoc-nav__control><svg class="icon gdoc_menu"><title>Open Nav Menu</title><use xlink:href="#gdoc_menu"/></svg><svg class="icon gdoc_arrow_back"><title>Close Nav Menu</title><use xlink:href="#gdoc_arrow_back"/></svg>
+</label>
+<a class=gdoc-header__link href=https://tsu-nera.github.io/keido/>
+<span class="gdoc-brand flex align-center">
+<img class=gdoc-brand__img src=/keido/brand.svg alt>
+<span class=gdoc-brand__title>Keido</span>
+</span>
+</a>
+<div class=gdoc-menu-header>
+<span id=gdoc-dark-mode><svg class="icon gdoc_brightness_dark"><title>Toggle Dark/Light/Auto mode</title><use xlink:href="#gdoc_brightness_dark"/></svg><svg class="icon gdoc_brightness_light"><title>Toggle Dark/Light/Auto mode</title><use xlink:href="#gdoc_brightness_light"/></svg><svg class="icon gdoc_brightness_auto"><title>Toggle Dark/Light/Auto mode</title><use xlink:href="#gdoc_brightness_auto"/></svg>
+</span>
+</div>
+</div>
+</header>
+<main class="container flex flex-even">
+<aside class=gdoc-nav>
+<nav>
+<div class=gdoc-search><svg class="icon gdoc_search"><use xlink:href="#gdoc_search"/></svg>
+<input type=text id=gdoc-search-input class=gdoc-search__input placeholder=Search... aria-label=Search maxlength=64>
+<div class="gdoc-search__spinner spinner hidden"></div>
+<ul id=gdoc-search-results class=gdoc-search__list></ul>
+</div>
+<section class=gdoc-nav--main>
+<h2>Navigation</h2>
+<ul class=gdoc-nav__list>
+<li>
+<span class=flex>
+<a href=/keido/notes/ class=gdoc-nav__entry>
+HOME
+</a>
+</span>
+</li>
+<li>
+<span class=flex>
+<a href=/keido/notes/20211231162342/ class=gdoc-nav__entry>
+勉強記録
+</a>
+</span>
+</li>
+</ul>
+</section>
+<section class=gdoc-nav--more>
+</section>
+</nav>
+</aside>
+<div class=gdoc-page>
+<div class="gdoc-page__header flex flex-wrap
+justify-end" itemprop=breadcrumb>
+<div>
+<span class=editpage><svg class="icon gdoc_code"><use xlink:href="#gdoc_code"/></svg>
+<a href=https://github.com/tsu-nera/keido/edit/main/content/notes/hekireki.md>
+Edit this page
+</a>
+</span>
+</div>
+</div>
+<article class="gdoc-markdown gdoc-markdown__align--left">
+<h1>⚡My Emacs Config - 霹靂一閃</h1>
+<p>Emacsの呼吸壱ノ型, 霹靂一閃.</p>
+<p>packageの並び順は <a class=gdoc-markdown__link href=https://github.com/hlissner/doom-emacs>Doom Emacs</a> の <a class=gdoc-markdown__link href=https://github.com/hlissner/doom-emacs/blob/develop/docs/modules.org>Molule Index</a> (アルファベット順)に従う.</p>
+<p>ref: <a class=gdoc-markdown__link href=https://github.com/tsu-nera/hekireki>https://github.com/tsu-nera/hekireki</a></p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=c1>;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h2 id=app>
+App
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#app class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor App" href=#app><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h2>
+</div><div class=gdoc-page__anchorwrap>
+<h3 id=twitter>
+Twitter
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#twitter class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Twitter" href=#twitter><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h3>
+</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=c1>;; App</span>
+<span class=c1>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+
+<span class=c1>;; twittering-mode</span>
+<span class=c1>;; この設定がないと認証が失敗した.</span>
+<span class=c1>;; twittering-oauth-get-access-token: Failed to retrieve a request token</span>
+<span class=p>(</span><span class=nv>add-hook!</span> <span class=ss>&#39;twittering-mode-hook</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>twittering-allow-insecure-server-cert</span> <span class=no>t</span><span class=p>))</span>
+
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h3 id=eww>
+eww
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#eww class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor eww" href=#eww><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h3>
+</div><p>Emacsのテキストブラウザ(<a class=gdoc-markdown__link href=https://www.gnu.org/software/emacs/manual/html%5Fmono/eww.html>Manual</a>)</p>
+<p>notes:</p>
+<ul>
+<li>ewwを起動しただけだとminibufferなのでC-gで消えてしまうので大きくC-x 1とかで大きくする.</li>
+<li>C-u M-x ewwでひとつのbufferを使いまわすのではなく別のBufferでewwを開く.</li>
+<li>M-RETでURLを新しいBufferで開く.</li>
+<li>Doom EmacsだとC-c s o(online)でいろいろと検索できる(w/Chrome). helm-google-suggest的な.</li>
+</ul>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=p>(</span><span class=nv>use-package!</span> <span class=nv>eww</span>
+  <span class=nb>:bind</span>
+  <span class=p>(</span><span class=s>&#34;C-c s w&#34;</span> <span class=o>.</span> <span class=nv>eww-search-words</span><span class=p>)</span>
+  <span class=p>(</span><span class=s>&#34;C-c o w&#34;</span> <span class=o>.</span> <span class=nv>eww-open-in-new-buffer</span><span class=p>))</span>
+</code></pre></div><ul>
+<li>ace-linkをつかうとewwのlinkをインタラクティブに選択できて便利.</li>
+</ul>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=p>(</span><span class=nv>use-package!</span> <span class=nv>ace-link</span>
+  <span class=nb>:config</span>
+  <span class=p>(</span><span class=nv>eval-after-load</span> <span class=ss>&#39;eww</span> <span class=o>&#39;</span><span class=p>(</span><span class=nf>define-key</span> <span class=nv>eww-mode-map</span> <span class=s>&#34;f&#34;</span> <span class=ss>&#39;ace-link-eww</span><span class=p>))</span>
+  <span class=p>(</span><span class=nv>ace-link-setup-default</span><span class=p>))</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h3 id=org-web-tools>
+org-web-tools
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#org-web-tools class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor org-web-tools" href=#org-web-tools><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h3>
+</div><p>ewwとorgを便利にするツール群(<a class=gdoc-markdown__link href=https://github.com/alphapapa/org-web-tools>https://github.com/alphapapa/org-web-tools</a>).</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=p>(</span><span class=nv>use-package!</span> <span class=nv>org-web-tools</span>
+  <span class=nb>:bind</span>
+  <span class=p>(</span><span class=s>&#34;C-c i l&#34;</span> <span class=o>.</span> <span class=nv>org-web-tools-insert-link-for-url</span><span class=p>))</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h3 id=pocket>
+Pocket
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#pocket class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Pocket" href=#pocket><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h3>
+</div><p>あとで読むサービス.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=p>(</span><span class=nv>global-set-key</span> <span class=p>(</span><span class=nv>kbd</span> <span class=s>&#34;C-x w p&#34;</span><span class=p>)</span> <span class=ss>&#39;pocket-reader</span><span class=p>)</span>
+<span class=p>(</span><span class=nv>use-package!</span> <span class=nv>pocket-reader</span>
+  <span class=nb>:bind</span>
+  <span class=p>(</span><span class=s>&#34;C-x w l&#34;</span> <span class=o>.</span> <span class=nv>pocker-reader-add-link</span><span class=p>)</span>
+  <span class=nb>:config</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>pocket-reader-open-url-default-function</span> <span class=nf>#&#39;</span><span class=nv>eww</span><span class=p>)</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>pocket-reader-pop-to-url-default-function</span> <span class=nf>#&#39;</span><span class=nv>eww</span><span class=p>))</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h3 id=rss--elfeed>
+RSS(Elfeed)
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#rss--elfeed class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor RSS(Elfeed)" href=#rss--elfeed><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h3>
+</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=c1>;; elfeed</span>
+<span class=p>(</span><span class=nv>global-set-key</span> <span class=p>(</span><span class=nv>kbd</span> <span class=s>&#34;C-x w w&#34;</span><span class=p>)</span> <span class=ss>&#39;elfeed</span><span class=p>)</span>
+<span class=p>(</span><span class=nv>use-package!</span> <span class=nv>elfeed</span>
+  <span class=nb>:config</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>elfeed-feeds</span>
+        <span class=o>&#39;</span><span class=p>(</span>
+          <span class=p>(</span><span class=s>&#34;https://yuchrszk.blogspot.com/feeds/posts/default&#34;</span> <span class=nv>blog</span><span class=p>)</span> <span class=c1>; パレオな男</span>
+          <span class=p>(</span><span class=s>&#34;https://www.youtube.com/feeds/videos.xml?channel_id=UCFo4kqllbcQ4nV83WCyraiw&#34;</span> <span class=nv>youtube</span><span class=p>)</span> <span class=c1>; 中田敦彦</span>
+          <span class=p>(</span><span class=s>&#34;https://www.youtube.com/feeds/videos.xml?channel_id=UCFdBehO71GQaIom4WfVeGSw&#34;</span> <span class=nv>youtube</span><span class=p>)</span> <span class=c1>;メンタリストDaiGo</span>
+          <span class=p>(</span><span class=s>&#34;https://www.youtube.com/feeds/videos.xml?playlist_id=PL3N_SB4Wr_S2cGYuI02bdb4UN9XTZRNDu&#34;</span> <span class=nv>youtube</span><span class=p>)</span> <span class=c1>; 与沢の流儀</span>
+          <span class=p>))</span>
+  <span class=p>(</span><span class=nb>setq-default</span> <span class=nv>elfeed-search-filter</span> <span class=s>&#34;@1-week-ago +unread &#34;</span><span class=p>)</span>
+  <span class=p>(</span><span class=nb>defun</span> <span class=nv>elfeed-search-format-date</span> <span class=p>(</span><span class=nv>date</span><span class=p>)</span>
+    <span class=p>(</span><span class=nf>format-time-string</span> <span class=s>&#34;%Y-%m-%d %H:%M&#34;</span> <span class=p>(</span><span class=nv>seconds-to-time</span> <span class=nv>date</span><span class=p>)))</span>
+  <span class=p>)</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h2 id=checkers>
+Checkers
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#checkers class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Checkers" href=#checkers><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h2>
+</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=c1>;; Checkers</span>
+<span class=c1>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h2 id=completion>
+Completion
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#completion class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Completion" href=#completion><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h2>
+</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=c1>;; Completion</span>
+<span class=c1>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class=p>(</span><span class=nv>use-package!</span> <span class=nv>avy</span>
+  <span class=nb>:bind</span>
+  <span class=p>(</span><span class=s>&#34;M-g c&#34;</span> <span class=o>.</span> <span class=nv>avy-goto-char</span><span class=p>)</span> <span class=c1>;; doom の keybind 上書き.</span>
+  <span class=p>(</span><span class=s>&#34;M-g g&#34;</span> <span class=o>.</span> <span class=nv>avy-goto-line</span><span class=p>)</span> <span class=c1>;; doom の keybind 上書き.</span>
+  <span class=p>(</span><span class=s>&#34;M-g s&#34;</span><span class=o>.</span> <span class=nv>avy-goto-word-1</span><span class=p>))</span>
+
+<span class=c1>;; うまく動かないので封印 doom との相性が悪いのかも.</span>
+<span class=c1>;; ひとまず migemo したいときは isearch で対応.</span>
+<span class=c1>;; (use-package! avy-migemo</span>
+<span class=c1>;;  :after migemo</span>
+<span class=c1>;;  :bind</span>
+<span class=c1>;;  (&#34;M-g m m&#34; . avy-migemo-mode)</span>
+<span class=c1>;;  (&#34;M-g c&#34; . avy-migemo-goto-char-timer) ;; doom の keybind 上書き.</span>
+<span class=c1>;;  :config</span>
+<span class=c1>;;  (avy-migemo-mode 1)</span>
+<span class=c1>;;  (setq avy-timeout-seconds nil))</span>
+
+<span class=p>(</span><span class=nv>use-package!</span> <span class=nv>swiper</span>
+  <span class=nb>:bind</span>
+<span class=c1>;  (&#34;C-s&#34; . swiper) ;; migemo とうまく連携しないので isearch 置き換えを保留. C-c s s で swiper 起動.</span>
+  <span class=nb>:config</span>
+  <span class=p>(</span><span class=nv>ivy-mode</span> <span class=mi>1</span><span class=p>))</span>
+
+<span class=c1>;; avy-migemo-e.g.swiper だけバクる</span>
+<span class=c1>;; https://github.com/abo-abo/swiper/issues/2249</span>
+<span class=c1>;;(after! avy-migemo</span>
+<span class=c1>;;  (require &#39;avy-migemo-e.g.swiper))</span>
+
+<span class=c1>;; org-roam の completion-at-point が動作しないのはこいつかな...</span>
+<span class=c1>;; (add-hook! &#39;org-mode-hook (company-mode -1))</span>
+<span class=c1>;; company はなにげに使いそうだからな，TAB でのみ補完発動させるか.</span>
+<span class=p>(</span><span class=nb>setq</span> <span class=nv>company-idle-delay</span> <span class=no>nil</span><span class=p>)</span>
+<span class=p>(</span><span class=nv>global-set-key</span> <span class=p>(</span><span class=nv>kbd</span> <span class=s>&#34;TAB&#34;</span><span class=p>)</span> <span class=nf>#&#39;</span><span class=nv>company-indent-or-complete-common</span><span class=p>)</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h3 id=all-the-icons-completion>
+all-the-icons-completion
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#all-the-icons-completion class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor all-the-icons-completion" href=#all-the-icons-completion><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h3>
+</div><p><a class=gdoc-markdown__link href=https://github.com/iyefrat/all-the-icons-completion>https://github.com/iyefrat/all-the-icons-completion</a></p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=p>(</span><span class=nv>use-package!</span> <span class=nv>all-the-icons-completion</span>
+  <span class=nb>:init</span>
+  <span class=p>(</span><span class=nv>all-the-icons-completion-mode</span><span class=p>))</span>
+<span class=p>(</span><span class=nv>add-hook!</span> <span class=nv>marginalia-mode-hook</span> <span class=nf>#&#39;</span><span class=nv>all-the-icons-completion-marginalia-setup</span><span class=p>)</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h2 id=config>
+Config
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#config class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Config" href=#config><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h2>
+</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=c1>;; Config</span>
+<span class=c1>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class=c1>;; memo:</span>
+<span class=c1>;; use-package! は:defer, :hook, :commands, or :after が省略されると起動時に load される.</span>
+<span class=c1>;; after! は package が load されたときに評価される.</span>
+<span class=c1>;; add-hook! は mode 有効化のとき. setq-hook!は equivalent.</span>
+<span class=c1>;; どれを使うかの正解はないがすべて use-package!だと起動が遅くなるので</span>
+<span class=c1>;; 場合によってカスタマイズせよ，とのこと.</span>
+<span class=c1>;; https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#configuring-packages</span>
+<span class=c1>;;</span>
+<span class=c1>;; doom specific config</span>
+<span class=c1>;; (setq user-full-name &#34;John Doe&#34;</span>
+<span class=c1>;;      user-mail-address &#34;john@doe.com&#34;)</span>
+<span class=p>(</span><span class=nb>setq</span> <span class=nv>confirm-kill-emacs</span> <span class=no>nil</span><span class=p>)</span> <span class=c1>; 終了時の確認はしない.</span>
+
+<span class=c1>;; フルスクリーンで Emacs 起動</span>
+<span class=c1>;; ブラウザと並べて表示することが多くなったのでいったんマスク</span>
+<span class=c1>;; (add-to-list &#39;initial-frame-alist &#39;(fullscreen . maximized))</span>
+
+<span class=c1>;; This is to use pdf-tools instead of doc-viewer</span>
+<span class=p>(</span><span class=nv>use-package!</span> <span class=nv>pdf-tools</span>
+  <span class=nb>:config</span>
+  <span class=p>(</span><span class=nv>pdf-tools-install</span><span class=p>)</span>
+  <span class=c1>;; This means that pdfs are fitted to width by default when you open them</span>
+  <span class=p>(</span><span class=nb>setq-default</span> <span class=nv>pdf-view-display-size</span> <span class=ss>&#39;fit-width</span><span class=p>)</span>
+  <span class=nb>:custom</span>
+  <span class=p>(</span><span class=nv>pdf-annot-activate-created-annotations</span> <span class=no>t</span> <span class=s>&#34;automatically annotate highlights&#34;</span><span class=p>))</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h2 id=editor>
+Editor
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#editor class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Editor" href=#editor><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h2>
+</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=c1>;; Editor</span>
+<span class=c1>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class=c1>;; 英数字と日本語の間にスペースをいれる.</span>
+<span class=p>(</span><span class=nv>use-package!</span> <span class=nv>pangu-spacing</span>
+  <span class=nb>:config</span>
+  <span class=p>(</span><span class=nv>global-pangu-spacing-mode</span> <span class=mi>1</span><span class=p>)</span>
+  <span class=c1>;; 保存時に自動的にスペースを入れるのを抑止.あくまで入力時にしておく.</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>pangu-spacing-real-insert-separtor</span> <span class=no>nil</span><span class=p>))</span>
+
+<span class=c1>;; 記号の前後にスペースを入れる.</span>
+<span class=p>(</span><span class=nv>use-package!</span> <span class=nv>electric-operator</span><span class=p>)</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h2 id=emacs>
+Emacs
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#emacs class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Emacs" href=#emacs><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h2>
+</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=c1>;; Emacs</span>
+<span class=c1>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class=p>(</span><span class=nv>pixel-scroll-precision-mode</span><span class=p>)</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h3 id=ace-window>
+ace-window
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#ace-window class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor ace-window" href=#ace-window><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h3>
+</div><ul>
+<li>3つ以上のwindowの選択が番号でできる. defaultでC-x oを上書きしてる?</li>
+<li>C-u C-x o だとwindowをswapできる(ace-swap-window).</li>
+</ul>
+<div class=gdoc-page__anchorwrap>
+<h2 id=email>
+Email
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#email class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Email" href=#email><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h2>
+</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=c1>;; Email</span>
+<span class=c1>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h2 id=input>
+Input
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#input class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Input" href=#input><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h2>
+</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=c1>;; Input</span>
+<span class=c1>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class=p>(</span><span class=nv>set-language-environment</span> <span class=s>&#34;Japanese&#34;</span><span class=p>)</span>
+<span class=p>(</span><span class=nv>prefer-coding-system</span> <span class=ss>&#39;utf-8</span><span class=p>)</span>
+<span class=p>(</span><span class=nf>set-default</span> <span class=ss>&#39;buffer-filecoding-system</span> <span class=ss>&#39;utf-8</span><span class=p>)</span>
+
+<span class=c1>;; migemo</span>
+<span class=p>(</span><span class=nv>use-package!</span> <span class=nv>migemo</span>
+  <span class=nb>:config</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>migemo-command</span> <span class=s>&#34;cmigemo&#34;</span><span class=p>)</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>migemo-options</span> <span class=o>&#39;</span><span class=p>(</span><span class=s>&#34;-q&#34;</span> <span class=s>&#34;--emacs&#34;</span> <span class=s>&#34;-i&#34;</span> <span class=s>&#34;\a&#34;</span><span class=p>))</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>migemo-dictionary</span> <span class=s>&#34;/usr/share/migemo/utf-8/migemo-dict&#34;</span><span class=p>)</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>migemo-user-dictionary</span> <span class=no>nil</span><span class=p>)</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>migemo-regex-dictionary</span> <span class=no>nil</span><span class=p>)</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>migemo-coding-system</span> <span class=ss>&#39;utf-8-unix</span><span class=p>)</span>
+  <span class=p>(</span><span class=nv>migemo-init</span><span class=p>))</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h3 id=fcitx>
+fcitx
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#fcitx class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor fcitx" href=#fcitx><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h3>
+</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=p>(</span><span class=nv>use-package!</span> <span class=nv>fcitx</span>
+  <span class=nb>:config</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>fcitx-remote-command</span> <span class=s>&#34;fcitx5-remote&#34;</span><span class=p>)</span>
+  <span class=p>(</span><span class=nv>fcitx-aggressive-setup</span><span class=p>)</span>
+  <span class=c1>;; Linux なら t が推奨されるものの、fcitx5 には未対応なためここは nil</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>fcitx-use-dbus</span> <span class=no>nil</span><span class=p>))</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h2 id=lang>
+Lang
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#lang class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Lang" href=#lang><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h2>
+</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h2 id=os>
+OS
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#os class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor OS" href=#os><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h2>
+</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=c1>;; OS</span>
+<span class=c1>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class=p>(</span><span class=nb>require</span> <span class=ss>&#39;exwm-randr</span><span class=p>)</span>
+<span class=p>(</span><span class=nb>setq</span> <span class=nv>exwm-randr-workspace-output-plist</span> <span class=o>&#39;</span><span class=p>(</span><span class=mi>0</span> <span class=s>&#34;HDMI-1&#34;</span><span class=p>))</span>
+<span class=p>(</span><span class=nv>add-hook</span> <span class=ss>&#39;exwm-randr-screen-change-hook</span>
+         <span class=p>(</span><span class=nb>lambda</span> <span class=p>()</span>
+           <span class=p>(</span><span class=nv>start-process-shell-command</span>
+            <span class=s>&#34;xrandr&#34;</span> <span class=no>nil</span> <span class=s>&#34;xrandr --output HDMI-1 --primary --right-of eDP-1 --auto&#34;</span><span class=p>)))</span>
+<span class=p>(</span><span class=nv>exwm-randr-enable</span><span class=p>)</span>
+
+<span class=p>(</span><span class=nb>require</span> <span class=ss>&#39;exwm-systemtray</span><span class=p>)</span>
+<span class=p>(</span><span class=nv>exwm-systemtray-enable</span><span class=p>)</span>
+
+<span class=p>(</span><span class=nb>require</span> <span class=ss>&#39;exwm</span><span class=p>)</span>
+<span class=p>(</span><span class=nb>require</span> <span class=ss>&#39;exwm-config</span><span class=p>)</span>
+<span class=p>(</span><span class=nv>exwm-config-default</span><span class=p>)</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h2 id=org-mode>
+Org mode
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#org-mode class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Org mode" href=#org-mode><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h2>
+</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=c1>;; Org mode</span>
+<span class=c1>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class=c1>;; https://github.com/hlissner/doom-emacs/blob/develop/modules/lang/org/README.org</span>
+<span class=c1>;; https://github.com/tsu-nera/dotfiles/blob/master/.emacs.d/inits/50_org-mode.org</span>
+
+<span class=c1>;; スマホとの共有のため, github を clone したものを Dropbox に置いて$HOME に symlink している.</span>
+<span class=p>(</span><span class=nv>after!</span> <span class=nv>org</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-directory</span> <span class=s>&#34;~/keido&#34;</span><span class=p>)</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-default-notes-file</span> <span class=s>&#34;gtd/gtd_projects.org&#34;</span><span class=p>)</span>
+
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-return-follows-link</span> <span class=no>t</span><span class=p>)</span> <span class=c1>;; Enter でリンク先へジャンプ</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-use-speed-commands</span> <span class=no>t</span><span class=p>)</span>  <span class=c1>;; bullet にカーソルがあると高速移動</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-hide-emphasis-markers</span> <span class=no>t</span><span class=p>)</span> <span class=c1>;; * を消して表示.</span>
+
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-footnote-section</span> <span class=s>&#34;Notes&#34;</span><span class=p>)</span> <span class=c1>;; defaultではFootnotesなので変える.</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-footnote-auto-adjust</span> <span class=no>t</span><span class=p>)</span>
+
+  <span class=c1>;; M-RET の挙動の調整</span>
+  <span class=c1>;; t だと subtree の最終行に heading を挿入, nil だと current point に挿入</span>
+  <span class=c1>;; なお，C-RET だと subtree の最終行に挿入され, C-S-RET だと手前に挿入される.</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-insert-heading-respect-content</span> <span class=no>nil</span><span class=p>)</span>
+
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-startup-indented</span> <span class=no>t</span><span class=p>)</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-indent-mode-turns-on-hiding-stars</span> <span class=no>nil</span><span class=p>)</span>
+
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-startup-folded</span> <span class=ss>&#39;show2levels</span><span class=p>)</span><span class=c1>;; 見出しの階層指定</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-startup-truncated</span> <span class=no>nil</span><span class=p>)</span> <span class=c1>;; 長い文は折り返す.</span>
+
+  <span class=c1>;; org-babel のソースをキレイに表示.</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-src-fontify-natively</span> <span class=no>t</span><span class=p>)</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-fontify-whole-heading-line</span> <span class=no>t</span><span class=p>)</span>
+
+  <span class=c1>;; electric-indent は org-mode で誤作動の可能性があることのこと</span>
+  <span class=c1>;; たまにいきなり org-mode の tree 構造が壊れるから，とりあえず設定しておく.</span>
+  <span class=c1>;; この設定の効果が以下の記事で gif である.</span>
+  <span class=c1>;; https://www.philnewton.net/blog/electric-indent-with-org-mode/</span>
+  <span class=p>(</span><span class=nv>add-hook!</span> <span class=nv>org-mode</span> <span class=p>(</span><span class=nv>electric-indent-local-mode</span> <span class=mi>-1</span><span class=p>))</span>
+
+  <span class=c1>;; org-agenda</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-refile-targets</span> <span class=o>&#39;</span><span class=p>((</span><span class=nv>org-agenda-files</span> <span class=nb>:maxlevel</span> <span class=o>.</span> <span class=mi>3</span><span class=p>)))</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-agenda-time-leading-zero</span> <span class=no>t</span><span class=p>)</span> <span class=c1>;; 時間表示が 1 桁の時, 0 をつける</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>calendar-holidays</span> <span class=no>nil</span><span class=p>)</span> <span class=c1>;; 祝日を利用しない.</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-log-done</span> <span class=ss>&#39;time</span><span class=p>)</span><span class=c1>;; 変更時の終了時刻記録.</span>
+
+  <span class=c1>;; スケジュールやデッドラインアイテムは DONE になっていれば表示する</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-agenda-skip-deadline-if-done</span> <span class=no>nil</span><span class=p>)</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-agenda-skip-scheduled-if-done</span> <span class=no>nil</span><span class=p>)</span>
+
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-agenda-include-inactive-timestamps</span> <span class=no>t</span><span class=p>)</span> <span class=c1>;; default で logbook を表示</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-agenda-start-with-log-mode</span> <span class=no>t</span><span class=p>)</span> <span class=c1>;; ;; default で 時間を表示</span>
+
+  <span class=c1>;; org-agenda speedup tips</span>
+  <span class=c1>;; https://orgmode.org/worg/agenda-optimization.html</span>
+
+  <span class=c1>;; 何でもかんでも agenda すると思いので厳選.</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-agenda-files</span> <span class=o>&#39;</span><span class=p>(</span><span class=s>&#34;~/Dropbox/keido/notes/gtd/gtd_projects.org&#34;</span>
+                           <span class=s>&#34;~/Dropbox/keido/notes/journals/journal.org&#34;</span>
+                           <span class=c1>;; projectsディレクトリにある.orgをみる.</span>
+                           <span class=c1>;; その配下のorgファイルは対象にはならない.</span>
+                           <span class=s>&#34;~/Dropbox/keido/notes/gtd/projects&#34;</span><span class=p>))</span>
+
+  <span class=c1>;; 期間を限定</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-agenda-span</span> <span class=mi>7</span><span class=p>)</span>
+                                        <span class=c1>; Inhibit the dimming of blocked tasks:</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-agenda-dim-blocked-tasks</span> <span class=no>nil</span><span class=p>)</span>
+  <span class=c1>;; Inhibit agenda files startup options:</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-agenda-inhibit-startup</span> <span class=no>nil</span><span class=p>)</span>
+  <span class=c1>;; Disable tag inheritance in agenda:</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-agenda-use-tag-inheritance</span> <span class=no>nil</span><span class=p>)</span>
+
+  <span class=c1>;; org-capture</span>
+  <span class=c1>;; https://orgmode.org/manual/Capture-templates.html</span>
+  <span class=p>(</span><span class=nb>defun</span> <span class=nv>my/create-timestamped-org-file</span> <span class=p>(</span><span class=nv>path</span><span class=p>)</span>
+    <span class=p>(</span><span class=nf>expand-file-name</span> <span class=p>(</span><span class=nf>format</span> <span class=s>&#34;%s.org&#34;</span> <span class=p>(</span><span class=nf>format-time-string</span> <span class=s>&#34;%Y%m%d%H%M%S&#34;</span><span class=p>))</span> <span class=nv>path</span><span class=p>))</span>
+  <span class=p>(</span><span class=nb>defun</span> <span class=nv>my/create-date-org-file</span> <span class=p>(</span><span class=nv>path</span><span class=p>)</span>
+    <span class=p>(</span><span class=nf>expand-file-name</span> <span class=p>(</span><span class=nf>format</span> <span class=s>&#34;%s.org&#34;</span> <span class=p>(</span><span class=nf>format-time-string</span> <span class=s>&#34;%Y-%m-%d&#34;</span><span class=p>))</span> <span class=nv>path</span><span class=p>))</span>
+
+  <span class=p>(</span><span class=nb>defconst</span> <span class=nv>my/captured-notes-file</span> <span class=s>&#34;~/keido/inbox/inbox.org&#34;</span><span class=p>)</span>
+
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-capture-templates</span>
+        <span class=o>&#39;</span><span class=p>((</span><span class=s>&#34;i&#34;</span> <span class=s>&#34;📥 Inbox&#34;</span> <span class=nv>entry</span>
+           <span class=p>(</span><span class=nv>file</span> <span class=s>&#34;~/keido/inbox/inbox.org&#34;</span><span class=p>)</span> <span class=s>&#34;* %?\nCaptured On: %U\n&#34;</span>
+           <span class=nb>:klll-buffer</span> <span class=no>t</span><span class=p>)</span>
+          <span class=p>(</span><span class=s>&#34;I&#34;</span> <span class=s>&#34;📥+🌐 Inbox+Browser&#34;</span> <span class=nv>entry</span>
+           <span class=p>(</span><span class=nv>file</span> <span class=s>&#34;~/keido/inbox/inbox.org&#34;</span><span class=p>)</span>
+           <span class=s>&#34;* %?\nSource: [[%:link][%:description]]\nCaptured On: %U\n&#34;</span>
+           <span class=nb>:klll-buffer</span> <span class=no>t</span><span class=p>)</span>
+          <span class=p>(</span><span class=s>&#34;q&#34;</span> <span class=s>&#34;📥+🌐 Inbox+Browser(quote)&#34;</span> <span class=nv>entry</span>
+           <span class=p>(</span><span class=nv>file</span> <span class=s>&#34;~/keido/inbox/inbox.org&#34;</span><span class=p>)</span>
+           <span class=s>&#34;* %?\nSource: [[%:link][%:description]]\nCaptured On: %U\n%i\n&#34;</span>
+           <span class=nb>:klll-buffer</span> <span class=no>t</span><span class=p>)</span>
+          <span class=p>(</span><span class=s>&#34;c&#34;</span> <span class=s>&#34;☑ Planning&#34;</span> <span class=nv>plain</span>
+           <span class=p>(</span><span class=nv>file+headline</span> <span class=p>(</span><span class=nb>lambda</span> <span class=p>()</span> <span class=p>(</span><span class=nv>my/create-date-org-file</span> <span class=s>&#34;~/keido/notes/journals/daily&#34;</span><span class=p>))</span>
+                          <span class=s>&#34;Planning&#34;</span><span class=p>)</span>
+           <span class=s>&#34;%?&#34;</span>
+           <span class=nb>:unnarrowed</span> <span class=no>t</span>
+           <span class=nb>:kill-buffer</span> <span class=no>t</span><span class=p>)</span>
+          <span class=p>(</span><span class=s>&#34;t&#34;</span> <span class=s>&#34;🤔 Thought&#34;</span> <span class=nv>entry</span>
+           <span class=p>(</span><span class=nv>file+headline</span> <span class=p>(</span><span class=nb>lambda</span> <span class=p>()</span> <span class=p>(</span><span class=nv>my/create-date-org-file</span> <span class=s>&#34;~/keido/notes/journals/daily&#34;</span><span class=p>))</span>
+                          <span class=s>&#34;Thoughts&#34;</span><span class=p>)</span>
+           <span class=s>&#34;* 🤔 %?\n%T&#34;</span>
+           <span class=nb>:empty-lines</span> <span class=mi>1</span>
+           <span class=nb>:unnarrowed</span> <span class=no>t</span>
+           <span class=nb>:kill-buffer</span> <span class=no>t</span><span class=p>)</span>
+          <span class=p>(</span><span class=s>&#34;T&#34;</span> <span class=s>&#34;🤔+📃 Thought+Ref&#34;</span> <span class=nv>entry</span>
+           <span class=p>(</span><span class=nv>file+headline</span> <span class=p>(</span><span class=nb>lambda</span> <span class=p>()</span> <span class=p>(</span><span class=nv>my/create-date-org-file</span> <span class=s>&#34;~/keido/notes/journals/daily&#34;</span><span class=p>))</span>
+                          <span class=s>&#34;Thoughts&#34;</span><span class=p>)</span>
+           <span class=s>&#34;* 🤔 %?\n%T from %a\n&#34;</span>
+           <span class=nb>:empty-lines</span> <span class=mi>1</span>
+           <span class=nb>:unnarrowed</span> <span class=no>t</span>
+           <span class=nb>:kill-buffer</span> <span class=no>t</span><span class=p>)</span>
+          <span class=p>(</span><span class=s>&#34;l&#34;</span> <span class=s>&#34;🤔+🌐 Thought+Browser&#34;</span> <span class=nv>entry</span>
+           <span class=p>(</span><span class=nv>file+headline</span> <span class=p>(</span><span class=nb>lambda</span> <span class=p>()</span> <span class=p>(</span><span class=nv>my/create-date-org-file</span> <span class=s>&#34;~/keido/notes/journals/daily&#34;</span><span class=p>))</span>
+                          <span class=s>&#34;Thoughts&#34;</span><span class=p>)</span>
+             <span class=s>&#34;* 🤔 %?\n%T from [[%:link][%:description]]\n&#34;</span>
+           <span class=nb>:empty-lines</span> <span class=mi>1</span>
+           <span class=nb>:unnarrowed</span> <span class=no>t</span>
+           <span class=nb>:kill-buffer</span> <span class=no>t</span><span class=p>)</span>
+          <span class=p>(</span><span class=s>&#34;p&#34;</span> <span class=s>&#34;🍅 Pomodoro&#34;</span> <span class=nv>entry</span>
+           <span class=p>(</span><span class=nv>file+headline</span> <span class=p>(</span><span class=nb>lambda</span> <span class=p>()</span> <span class=p>(</span><span class=nv>my/create-date-org-file</span> <span class=s>&#34;~/keido/notes/journals/daily&#34;</span><span class=p>))</span>
+                          <span class=s>&#34;Pomodoros&#34;</span><span class=p>)</span>
+           <span class=s>&#34;* 🍅 %?\n%T&#34;</span>
+           <span class=nb>:empty-lines</span> <span class=mi>1</span>
+           <span class=nb>:unnarrowed</span> <span class=no>t</span>
+           <span class=nb>:kill-buffer</span> <span class=no>t</span><span class=p>)</span>
+          <span class=p>(</span><span class=s>&#34;j&#34;</span> <span class=s>&#34;🖊 Journal&#34;</span> <span class=nv>plain</span>
+           <span class=p>(</span><span class=nv>file</span> <span class=p>(</span><span class=nb>lambda</span> <span class=p>()</span> <span class=p>(</span><span class=nv>my/create-date-org-file</span> <span class=s>&#34;~/keido/notes/journals/daily&#34;</span><span class=p>)))</span>
+           <span class=s>&#34;%?&#34;</span>
+           <span class=nb>:empty-lines</span> <span class=mi>1</span>
+           <span class=nb>:unnarrowed</span> <span class=no>t</span>
+           <span class=nb>:kill-buffer</span> <span class=no>t</span><span class=p>)</span>
+          <span class=p>(</span><span class=s>&#34;J&#34;</span> <span class=s>&#34;🖊+📃 Journal+Ref&#34;</span> <span class=nv>plain</span>
+           <span class=p>(</span><span class=nv>file</span> <span class=p>(</span><span class=nb>lambda</span> <span class=p>()</span> <span class=p>(</span><span class=nv>my/create-date-org-file</span> <span class=s>&#34;~/keido/notes/journals/daily&#34;</span><span class=p>)))</span>
+           <span class=s>&#34;%?\n%a&#34;</span>
+           <span class=nb>:empty-lines</span> <span class=mi>1</span>
+           <span class=nb>:unnarrowed</span> <span class=no>t</span>
+           <span class=nb>:kill-buffer</span> <span class=no>t</span><span class=p>)</span>
+          <span class=p>(</span><span class=s>&#34;L&#34;</span> <span class=s>&#34;🖊+🌐 Journal+Browser&#34;</span> <span class=nv>plain</span>
+           <span class=p>(</span><span class=nv>file</span> <span class=p>(</span><span class=nb>lambda</span> <span class=p>()</span> <span class=p>(</span><span class=nv>my/create-date-org-file</span> <span class=s>&#34;~/keido/notes/journals/daily&#34;</span><span class=p>)))</span>
+             <span class=s>&#34;%?\nSource: [[%:link][%:description]]\nCaptured On: %U\n&#34;</span>
+           <span class=nb>:empty-lines</span> <span class=mi>1</span>
+           <span class=nb>:unnarrowed</span> <span class=no>t</span>
+           <span class=nb>:kill-buffer</span> <span class=no>t</span><span class=p>)</span>
+          <span class=p>(</span><span class=s>&#34;z&#34;</span> <span class=s>&#34;🎓 Zettelkasten&#34;</span> <span class=nv>plain</span>
+           <span class=p>(</span><span class=nv>file</span> <span class=p>(</span><span class=nb>lambda</span> <span class=p>()</span> <span class=p>(</span><span class=nv>my/create-timestamped-org-file</span> <span class=s>&#34;~/keido/notes/zk&#34;</span><span class=p>)))</span>
+           <span class=s>&#34;#+TITLE:🎓%?\n&#34;</span><span class=p>)</span>
+          <span class=p>(</span><span class=s>&#34;w&#34;</span> <span class=s>&#34;📝 Wiki&#34;</span> <span class=nv>plain</span>
+           <span class=p>(</span><span class=nv>file</span> <span class=p>(</span><span class=nb>lambda</span> <span class=p>()</span> <span class=p>(</span><span class=nv>my/create-timestamped-org-file</span> <span class=s>&#34;~/keido/notes/wiki&#34;</span><span class=p>)))</span>
+           <span class=s>&#34;#+EXPORT_FILE_NAME: ~/repo/futurismo4/wiki/xxx.rst
+</span><span class=s>#+OPTIONS: toc:t num:nil todo:nil pri:nil ^:nil author:nil *:t prop:nil
+</span><span class=s>#+TITLE:📝%?\n&#34;</span><span class=p>)</span>
+          <span class=p>))</span>
+
+  <span class=c1>;; org-babel</span>
+  <span class=c1>;; 評価でいちいち質問されないように.</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-confirm-babel-evaluate</span> <span class=no>nil</span><span class=p>)</span>
+  <span class=c1>;; org-babel で 実行した言語を書く. デフォルトでは emacs-lisp だけ.</span>
+  <span class=p>(</span><span class=nv>org-babel-do-load-languages</span>
+   <span class=ss>&#39;org-babel-load-languages</span>
+   <span class=o>&#39;</span><span class=p>((</span><span class=nv>lisp</span> <span class=o>.</span> <span class=no>t</span><span class=p>)</span>
+     <span class=p>(</span><span class=nv>shell</span> <span class=o>.</span> <span class=no>t</span><span class=p>)))</span>
+  <span class=p>)</span>
+
+<span class=c1>;; org-mode で timestamp のみを挿入するカスタム関数(hh:mm)</span>
+<span class=p>(</span><span class=nv>after!</span> <span class=nv>org</span>
+  <span class=p>(</span><span class=nb>defun</span> <span class=nv>my/insert-timestamp</span> <span class=p>()</span>
+    <span class=s>&#34;Insert time stamp.&#34;</span>
+    <span class=p>(</span><span class=nb>interactive</span><span class=p>)</span>
+    <span class=p>(</span><span class=nf>insert</span> <span class=p>(</span><span class=nf>format-time-string</span> <span class=s>&#34;%H:%M&#34;</span><span class=p>)))</span>
+  <span class=p>(</span><span class=nv>map!</span> <span class=nb>:map</span> <span class=nv>org-mode-map</span> <span class=s>&#34;C-c C-.&#34;</span> <span class=nf>#&#39;</span><span class=nv>my/insert-timestamp</span><span class=p>))</span>
+
+<span class=c1>;; +pretty(org-superstar-mode)関連</span>
+<span class=c1>;;; Titles and Sections</span>
+<span class=c1>;; hide #+TITLE:</span>
+<span class=c1>;; (setq org-hidden-keywords &#39;(title))</span>
+<span class=c1>;; set basic title font</span>
+<span class=c1>;; (set-face-attribute &#39;org-level-8 nil :weight &#39;bold :inherit &#39;default)</span>
+<span class=c1>;; Low levels are unimportant =&gt; no scaling</span>
+<span class=c1>;; (set-face-attribute &#39;org-level-7 nil :inherit &#39;org-level-8)</span>
+<span class=c1>;; (set-face-attribute &#39;org-level-6 nil :inherit &#39;org-level-8)</span>
+<span class=c1>;; (set-face-attribute &#39;org-level-5 nil :inherit &#39;org-level-8)</span>
+<span class=c1>;; (set-face-attribute &#39;org-level-4 nil :inherit &#39;org-level-8)</span>
+<span class=c1>;; Top ones get scaled the same as in LaTeX (\large, \Large, \LARGE)</span>
+<span class=c1>;; (set-face-attribute &#39;org-level-3 nil :inherit &#39;org-level-8 :height 1.2) ;\large</span>
+<span class=c1>;; (set-face-attribute &#39;org-level-2 nil :inherit &#39;org-level-8 :height 1.44) ;\Large</span>
+<span class=c1>;; (set-face-attribute &#39;org-level-1 nil :inherit &#39;org-level-8 :height 1.728) ;\LARGE</span>
+<span class=c1>;; Only use the first 4 styles and do not cycle.</span>
+<span class=p>(</span><span class=nb>setq</span> <span class=nv>org-cycle-level-faces</span> <span class=no>nil</span><span class=p>)</span>
+<span class=p>(</span><span class=nb>setq</span> <span class=nv>org-n-level-faces</span> <span class=mi>4</span><span class=p>)</span>
+<span class=c1>;; Document Title, (\huge)</span>
+<span class=c1>;; (set-face-attribute &#39;org-document-title nil</span>
+<span class=c1>;;                    :height 2.074</span>
+<span class=c1>;;                    :foreground &#39;unspecified</span>
+<span class=c1>;;                    :inherit &#39;org-level-8)</span>
+
+<span class=c1>;; (with-eval-after-load &#39;org-superstar</span>
+<span class=c1>;;  (set-face-attribute &#39;org-superstar-item nil :height 1.2)</span>
+<span class=c1>;;  (set-face-attribute &#39;org-superstar-header-bullet nil :height 1.2)</span>
+<span class=c1>;;  (set-face-attribute &#39;org-superstar-leading nil :height 1.3))</span>
+<span class=c1>;; Set different bullets, with one getting a terminal fallback.</span>
+<span class=p>(</span><span class=nb>setq</span> <span class=nv>org-superstar-headline-bullets-list</span> <span class=o>&#39;</span><span class=p>(</span><span class=s>&#34;■&#34;</span> <span class=s>&#34;◆&#34;</span> <span class=s>&#34;●&#34;</span> <span class=s>&#34;▷&#34;</span><span class=p>))</span>
+<span class=c1>;; (setq org-superstar-special-todo-items t)</span>
+
+<span class=c1>;; Stop cycling bullets to emphasize hierarchy of headlines.</span>
+<span class=p>(</span><span class=nb>setq</span> <span class=nv>org-superstar-cycle-headline-bullets</span> <span class=no>nil</span><span class=p>)</span>
+<span class=c1>;; Hide away leading stars on terminal.</span>
+<span class=c1>;; (setq org-superstar-leading-fallback ?\s)</span>
+<span class=p>(</span><span class=nb>setq</span> <span class=nv>inhibit-compacting-font-caches</span> <span class=no>t</span><span class=p>)</span>
+
+<span class=c1>;; 読書のためのマーカー（仮）</span>
+<span class=c1>;; あとでちゃんと検討と朝鮮しよう.</span>
+<span class=c1>;; (setq org-emphasis-alist</span>
+<span class=c1>;;   &#39;((&#34;*&#34; bold)</span>
+<span class=c1>;;     (&#34;/&#34; italic)</span>
+<span class=c1>;;     (&#34;_&#34; underline))</span>
+<span class=c1>;;     (&#34;=&#34; (:background &#34;red&#34; :foreground &#34;white&#34;)) ;; 書き手の主張</span>
+<span class=c1>;;     (&#34;~&#34; (:background &#34;blue&#34; :foreground &#34;white&#34;)) cddddd;; 根拠</span>
+<span class=c1>;;     (&#34;+&#34; (:background &#34;green&#34; :foreground &#34;black&#34;)))) ;; 自分の考え</span>
+
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h3 id=org-toggl>
+org-toggl
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#org-toggl class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor org-toggl" href=#org-toggl><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h3>
+</div><p>org-modeをTogglと連携させる.
+<a class=gdoc-markdown__link href=https://github.com/mbork/org-toggl>https://github.com/mbork/org-toggl</a></p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=p>(</span><span class=nv>use-package!</span> <span class=nv>org-toggl</span>
+  <span class=nb>:after</span> <span class=nv>org</span>
+  <span class=nb>:config</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-toggl-inherit-toggl-properties</span> <span class=no>t</span><span class=p>)</span>
+  <span class=p>(</span><span class=nv>toggl-get-projects</span><span class=p>)</span>
+  <span class=p>(</span><span class=nv>org-toggl-integration-mode</span><span class=p>))</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h3 id=ox-hugo>
+ox-hugo
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#ox-hugo class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor ox-hugo" href=#ox-hugo><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h3>
+</div><p>Org-modeで書いたブログ記事をHugoにあったMarkdown形式に変換する.</p>
+<p>ブログFuturismoはOrg-modeで執筆してこれを利用してMarkdownに変換している.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=p>(</span><span class=nv>use-package!</span> <span class=nv>ox-hugo</span>
+  <span class=nb>:after</span> <span class=ss>&#39;ox</span><span class=p>)</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h3 id=ox-rst>
+ox-rst
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#ox-rst class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor ox-rst" href=#ox-rst><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h3>
+</div><p>Org-modeで書いたWiki用のページをSphinxで公開するためにreST形式に変換する.</p>
+<p>リンク形式がうまく変換できないのでけっこう強引に変換している(もう少しうまく改善したい).</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=p>(</span><span class=nv>use-package!</span> <span class=nv>ox-rst</span>
+  <span class=nb>:after</span> <span class=ss>&#39;ox</span><span class=p>)</span>
+
+<span class=p>(</span><span class=nv>after!</span> <span class=nv>ox</span>
+  <span class=p>(</span><span class=nb>defun</span> <span class=nv>my/rst-to-sphinx-link-format</span> <span class=p>(</span><span class=nv>text</span> <span class=nv>backend</span> <span class=nv>info</span><span class=p>)</span>
+    <span class=p>(</span><span class=nb>when</span> <span class=p>(</span><span class=nb>and</span> <span class=p>(</span><span class=nv>org-export-derived-backend-p</span> <span class=nv>backend</span> <span class=ss>&#39;rst</span><span class=p>)</span> <span class=p>(</span><span class=nv>not</span> <span class=p>(</span><span class=nv>search</span> <span class=s>&#34;&lt;http&#34;</span> <span class=nv>text</span><span class=p>)))</span>
+      <span class=p>(</span><span class=nv>replace-regexp-in-string</span> <span class=s>&#34;\\(\\.org&gt;`_\\)&#34;</span> <span class=s>&#34;&gt;`&#34;</span> <span class=p>(</span><span class=nf>concat</span> <span class=s>&#34;:doc:&#34;</span> <span class=nv>text</span><span class=p>)</span> <span class=no>nil</span> <span class=no>nil</span> <span class=mi>1</span><span class=p>)))</span>
+  <span class=p>(</span><span class=nv>add-to-list</span> <span class=ss>&#39;org-export-filter-link-functions</span>
+               <span class=ss>&#39;my/rst-to-sphinx-link-format</span><span class=p>))</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h3 id=org-journal>
+org-journal
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#org-journal class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor org-journal" href=#org-journal><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h3>
+</div><p><a class=gdoc-markdown__link href=https://github.com/bastibe/org-journal>https://github.com/bastibe/org-journal</a></p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=p>(</span><span class=nv>use-package!</span> <span class=nv>org-journal</span>
+  <span class=nb>:after</span> <span class=nv>org</span>
+  <span class=nb>:bind</span>
+  <span class=p>(</span><span class=s>&#34;C-c r d n&#34;</span> <span class=o>.</span> <span class=nv>org-journal-new-entry</span><span class=p>)</span>
+  <span class=p>(</span><span class=s>&#34;C-c r d d&#34;</span> <span class=o>.</span> <span class=nv>org-journal-open-current-journal-file</span><span class=p>)</span>
+  <span class=nb>:custom</span>
+  <span class=p>(</span><span class=nv>org-journal-date-prefix</span> <span class=s>&#34;#+TITLE: ✍&#34;</span><span class=p>)</span>
+  <span class=p>(</span><span class=nv>org-journal-file-format</span> <span class=s>&#34;%Y-%m-%d.org&#34;</span><span class=p>)</span>
+  <span class=p>(</span><span class=nv>org-journal-dir</span> <span class=p>(</span><span class=nv>file-truename</span> <span class=s>&#34;~/keido/notes/journals/daily&#34;</span><span class=p>))</span>
+  <span class=p>(</span><span class=nv>org-journal-date-format</span> <span class=s>&#34;%Y-%m-%d&#34;</span><span class=p>)</span>
+  <span class=nb>:config</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-journal-enable-agenda-integration</span> <span class=no>t</span><span class=p>)</span>
+  <span class=p>(</span><span class=nb>defun</span> <span class=nv>org-journal-file-header-func</span> <span class=p>(</span><span class=nv>time</span><span class=p>)</span>
+     <span class=s>&#34;Custom function to create journal header.&#34;</span>
+     <span class=p>(</span><span class=nf>concat</span>
+      <span class=p>(</span><span class=nb>pcase</span> <span class=nv>org-journal-file-type</span>
+        <span class=p>(</span><span class=o>`</span><span class=nv>daily</span> <span class=s>&#34;#+STARTUP: showeverything&#34;</span><span class=p>))))</span>
+  <span class=c1>;;     ;; (`weekly &#34;#+TITLE: Weekly Journal\n#+STARTUP: folded&#34;)</span>
+  <span class=c1>;;     ;;(`monthly &#34;#+TITLE: Monthly Journal\n#+STARTUP: folded&#34;)</span>
+  <span class=c1>;;     ;; (`yearly &#34;#+TITLE: Yearly Journal\n#+STARTUP: folded&#34;))))</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-journal-file-header</span> <span class=ss>&#39;org-journal-file-header-func</span><span class=p>)</span>
+
+  <span class=c1>;; org-roamに対応させるためにorg-idを生成</span>
+  <span class=p>(</span><span class=nb>defun</span> <span class=nv>org-create-new-id-journal</span> <span class=p>()</span>
+    <span class=p>(</span><span class=nf>goto-char</span> <span class=p>(</span><span class=nf>point-min</span><span class=p>))</span>
+    <span class=p>(</span><span class=nv>org-id-get-create</span><span class=p>)</span>
+    <span class=p>(</span><span class=nf>goto-char</span> <span class=p>(</span><span class=nf>point-max</span><span class=p>)))</span>
+  <span class=p>(</span><span class=nv>add-hook</span> <span class=ss>&#39;org-journal-after-header-create-hook</span> <span class=ss>&#39;org-create-new-id-journal</span><span class=p>)</span>
+<span class=p>)</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h3 id=org-roam>
+Org-roam
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#org-roam class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Org-roam" href=#org-roam><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h3>
+</div><p>Zettelkasten MethodのOrg-roam実装.</p>
+<p>org-roam-dialiesよりもorg-journalを利用する(org-agendaの都合).</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=c1>;; org-roam</span>
+<span class=p>(</span><span class=nb>setq</span> <span class=nv>org-roam-directory</span> <span class=p>(</span><span class=nv>file-truename</span> <span class=s>&#34;~/keido/notes&#34;</span><span class=p>))</span>
+<span class=p>(</span><span class=nb>setq</span> <span class=nv>org-roam-db-location</span> <span class=p>(</span><span class=nv>file-truename</span> <span class=s>&#34;~/keido/db/org-roam.db&#34;</span><span class=p>))</span>
+
+<span class=p>(</span><span class=nv>use-package!</span> <span class=nv>org-roam</span>
+  <span class=nb>:after</span> <span class=nv>org</span>
+  <span class=nb>:init</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-roam-v2-ack</span> <span class=no>t</span><span class=p>)</span>
+  <span class=p>(</span><span class=nv>map!</span>
+        <span class=nb>:leader</span>
+        <span class=nb>:prefix</span> <span class=p>(</span><span class=s>&#34;r&#34;</span> <span class=o>.</span> <span class=s>&#34;org-roam&#34;</span><span class=p>)</span>
+        <span class=s>&#34;f&#34;</span> <span class=nf>#&#39;</span><span class=nv>org-roam-node-find</span>
+        <span class=s>&#34;i&#34;</span> <span class=nf>#&#39;</span><span class=nv>org-roam-node-insert</span>
+        <span class=s>&#34;l&#34;</span> <span class=nf>#&#39;</span><span class=nv>org-roam-buffer-toggle</span>
+        <span class=s>&#34;t&#34;</span> <span class=nf>#&#39;</span><span class=nv>org-roam-tag-add</span>
+        <span class=s>&#34;T&#34;</span> <span class=nf>#&#39;</span><span class=nv>org-roam-tag-remove</span>
+        <span class=s>&#34;a&#34;</span> <span class=nf>#&#39;</span><span class=nv>org-roam-alias-add</span>
+        <span class=s>&#34;A&#34;</span> <span class=nf>#&#39;</span><span class=nv>org-roam-alias-remove</span>
+        <span class=s>&#34;r&#34;</span> <span class=nf>#&#39;</span><span class=nv>org-roam-ref-add</span>
+        <span class=s>&#34;R&#34;</span> <span class=nf>#&#39;</span><span class=nv>org-roam-ref-remove</span>
+        <span class=s>&#34;o&#34;</span> <span class=nf>#&#39;</span><span class=nv>org-id-get-create</span>
+        <span class=s>&#34;u&#34;</span> <span class=nf>#&#39;</span><span class=nv>my/org-roam-update</span>
+        <span class=p>)</span>
+  <span class=nb>:custom</span>
+  <span class=c1>;; ファイル名を ID にする.</span>
+  <span class=p>(</span><span class=nv>org-roam-capture-templates</span>
+   <span class=o>&#39;</span><span class=p>((</span><span class=s>&#34;d&#34;</span> <span class=s>&#34;default&#34;</span> <span class=nv>plain</span> <span class=s>&#34;%?&#34;</span>
+      <span class=nb>:target</span> <span class=p>(</span><span class=nv>file+head</span> <span class=s>&#34;%&lt;%Y%m%d%H%M%S&gt;.org&#34;</span>
+                         <span class=s>&#34;#+title: ${title}\n&#34;</span><span class=p>)</span>
+      <span class=nb>:unnarrowed</span> <span class=no>t</span><span class=p>)</span>
+     <span class=p>(</span><span class=s>&#34;z&#34;</span> <span class=s>&#34;🎓 Zettelkasten&#34;</span> <span class=nv>plain</span> <span class=s>&#34;%?&#34;</span>
+      <span class=nb>:target</span> <span class=p>(</span><span class=nv>file+head</span> <span class=s>&#34;zk/%&lt;%Y%m%d%H%M%S&gt;.org&#34;</span>
+                         <span class=s>&#34;#+title:🎓${title}\n&#34;</span><span class=p>)</span>
+      <span class=nb>:unnarrowed</span> <span class=no>t</span><span class=p>)</span>
+     <span class=p>(</span><span class=s>&#34;w&#34;</span> <span class=s>&#34;📝 Wiki&#34;</span> <span class=nv>plain</span> <span class=s>&#34;%?&#34;</span>
+      <span class=nb>:target</span> <span class=p>(</span><span class=nv>file+head</span> <span class=s>&#34;zk/%&lt;%Y%m%d%H%M%S&gt;.org&#34;</span>
+                         <span class=s>&#34;#+title:📝${title}\n&#34;</span><span class=p>)</span>
+      <span class=nb>:unnarrowed</span> <span class=no>t</span><span class=p>)</span>
+     <span class=p>(</span><span class=s>&#34;f&#34;</span> <span class=s>&#34;🦊 Darkfox&#34;</span> <span class=nv>plain</span> <span class=s>&#34;%?&#34;</span>
+      <span class=nb>:target</span> <span class=p>(</span><span class=nv>file+head</span> <span class=s>&#34;darkfox/%&lt;%Y%m%d%H%M%S&gt;.org&#34;</span>
+                         <span class=s>&#34;#+title:🦊${title}\n&#34;</span><span class=p>)</span>
+      <span class=nb>:unnarrowed</span> <span class=no>t</span><span class=p>)</span>
+     <span class=p>(</span><span class=s>&#34;b&#34;</span> <span class=s>&#34;📚 Book&#34;</span> <span class=nv>plain</span>
+      <span class=s>&#34;%?
+</span><span class=s>
+</span><span class=s>- title: %^{title}
+</span><span class=s>- authors: %^{author}
+</span><span class=s>- date: %^{date}
+</span><span class=s>- publisher: %^{publisher}
+</span><span class=s>- url: http://www.amazon.co.jp/dp/%^{isbn}
+</span><span class=s>&#34;</span>
+      <span class=nb>:target</span> <span class=p>(</span><span class=nv>file+head</span> <span class=s>&#34;zk/%&lt;%Y%m%d%H%M%S&gt;.org&#34;</span>
+                         <span class=s>&#34;#+title:📚${title} - ${author}(${date})\n&#34;</span><span class=p>)</span>
+      <span class=nb>:unnarrowed</span> <span class=no>t</span><span class=p>)</span>
+     <span class=p>(</span><span class=s>&#34;t&#34;</span> <span class=s>&#34;🎤 Talk&#34;</span> <span class=nv>plain</span>
+      <span class=s>&#34;%?
+</span><span class=s>
+</span><span class=s>- title: %^{title}
+</span><span class=s>- editor: %^{editor}
+</span><span class=s>- date: %^{date}
+</span><span class=s>- url: %^{url}
+</span><span class=s>&#34;</span>
+      <span class=nb>:target</span> <span class=p>(</span><span class=nv>file+head</span> <span class=s>&#34;zk/%&lt;%Y%m%d%H%M%S&gt;.org&#34;</span>
+                         <span class=s>&#34;#+title:🎤${title} - ${editor}(${date})\n&#34;</span><span class=p>)</span>
+      <span class=nb>:unnarrowed</span> <span class=no>t</span><span class=p>)</span>
+     <span class=p>(</span><span class=s>&#34;o&#34;</span> <span class=s>&#34;💻 Online&#34;</span> <span class=nv>plain</span>
+      <span class=s>&#34;%?
+</span><span class=s>
+</span><span class=s>- title: %^{title}
+</span><span class=s>- authors: %^{author}
+</span><span class=s>- url: %^{url}
+</span><span class=s>&#34;</span>
+      <span class=nb>:target</span> <span class=p>(</span><span class=nv>file+head</span> <span class=s>&#34;zk/%&lt;%Y%m%d%H%M%S&gt;.org&#34;</span>
+                         <span class=s>&#34;#+title:💻${title}\n&#34;</span><span class=p>)</span>
+      <span class=nb>:unnarrowed</span> <span class=no>t</span><span class=p>)))</span>
+  <span class=p>(</span><span class=nv>org-roam-extract-new-file-path</span> <span class=s>&#34;%&lt;%Y%m%d%H%M%S&gt;.org&#34;</span><span class=p>)</span>
+  <span class=c1>;;        :map org-mode-map</span>
+  <span class=c1>;;        (&#34;C-M-i&#34;    . completion-at-point)</span>
+  <span class=nb>:config</span>
+  <span class=p>(</span><span class=nb>defun</span> <span class=nv>my/org-roam-update</span> <span class=p>()</span>
+    <span class=p>(</span><span class=nb>interactive</span><span class=p>)</span>
+    <span class=p>(</span><span class=nv>org-roam-update-org-id-locations</span><span class=p>)</span>
+    <span class=p>(</span><span class=nv>org-roam-db-sync</span><span class=p>))</span>
+
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>+org-roam-open-buffer-on-find-file</span> <span class=no>nil</span><span class=p>)</span>
+  <span class=p>(</span><span class=nv>org-roam-db-autosync-mode</span><span class=p>))</span>
+
+
+<span class=p>(</span><span class=nv>use-package!</span> <span class=nv>websocket</span>
+    <span class=nb>:after</span> <span class=nv>org-roam</span><span class=p>)</span>
+<span class=p>(</span><span class=nv>use-package!</span> <span class=nv>org-roam-ui</span>
+    <span class=nb>:after</span> <span class=nv>org-roam</span> <span class=c1>;; or :after org</span>
+<span class=c1>;;         normally we&#39;d recommend hooking orui after org-roam, but since org-roam does not have</span>
+<span class=c1>;;         a hookable mode anymore, you&#39;re advised to pick something yourself</span>
+<span class=c1>;;         if you don&#39;t care about startup time, use</span>
+    <span class=c1>;; :hook (after-init . org-roam-ui-mode)</span>
+    <span class=nb>:config</span>
+    <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-roam-ui-sync-theme</span> <span class=no>t</span>
+          <span class=nv>org-roam-ui-follow</span> <span class=no>t</span>
+          <span class=nv>org-roam-ui-update-on-save</span> <span class=no>t</span>
+          <span class=nv>org-roam-ui-open-on-start</span> <span class=no>t</span><span class=p>))</span>
+
+<span class=p>(</span><span class=nv>use-package!</span> <span class=nv>org-roam-timestamps</span>
+   <span class=nb>:after</span> <span class=nv>org-roam</span>
+   <span class=nb>:config</span>
+   <span class=p>(</span><span class=nv>org-roam-timestamps-mode</span><span class=p>)</span>
+   <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-roam-timestamps-remember-timestamps</span> <span class=no>nil</span><span class=p>)</span>
+   <span class=p>(</span><span class=nb>setq</span> <span class=nv>org-roam-timestamps-remember-timestamps</span> <span class=no>nil</span><span class=p>))</span>
+
+
+<span class=c1>;; 今どきのアウトライナー的な線を出す.</span>
+<span class=c1>;; Terminal Mode ではつかえないので一旦無効化する.</span>
+<span class=c1>;; (require &#39;org-bars)</span>
+<span class=c1>;; (add-hook! &#39;org-mode-hook #&#39;org-bars-mode)</span>
+
+<span class=c1>;; 空白が保存時に削除されると bullet 表示がおかしくなる.</span>
+<span class=c1>;; なお wl-bulter は doom emacs のデフォルトで組み込まれている.</span>
+<span class=p>(</span><span class=nv>add-hook!</span> <span class=ss>&#39;org-mode-hook</span> <span class=p>(</span><span class=nv>ws-butler-mode</span> <span class=mi>-1</span><span class=p>))</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h4 id=org-roam管理下のノートの全文検索>
+Org-roam管理下のノートの全文検索
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#org-roam管理下のノートの全文検索 class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Org-roam管理下のノートの全文検索" href=#org-roam%e7%ae%a1%e7%90%86%e4%b8%8b%e3%81%ae%e3%83%8e%e3%83%bc%e3%83%88%e3%81%ae%e5%85%a8%e6%96%87%e6%a4%9c%e7%b4%a2><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h4>
+</div><p><a class=gdoc-markdown__link href=https://jblevins.org/projects/deft/>deft</a> より高速(<a class=gdoc-markdown__link href=https://org-roam.discourse.group/t/using-consult-ripgrep-with-org-roam-for-searching-notes>https://org-roam.discourse.group/t/using-consult-ripgrep-with-org-roam-for-searching-notes</a>).</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=p>(</span><span class=nb>defun</span> <span class=nv>my/org-roam-rg-search</span> <span class=p>()</span>
+  <span class=s>&#34;Search org-roam directory using consult-ripgrep. With live-preview.&#34;</span>
+  <span class=p>(</span><span class=nb>interactive</span><span class=p>)</span>
+  <span class=p>(</span><span class=nv>counsel-rg</span> <span class=no>nil</span> <span class=nv>org-roam-directory</span><span class=p>))</span>
+<span class=p>(</span><span class=nv>global-set-key</span> <span class=p>(</span><span class=nv>kbd</span> <span class=s>&#34;C-c r s&#34;</span><span class=p>)</span> <span class=ss>&#39;my/org-roam-rg-search</span><span class=p>)</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h4 id=org-publish--org-roamのノートをサイトへ公開>
+org-publish(Org-roamのノートをサイトへ公開)
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#org-publish--org-roamのノートをサイトへ公開 class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor org-publish(Org-roamのノートをサイトへ公開)" href=#org-publish--org-roam%e3%81%ae%e3%83%8e%e3%83%bc%e3%83%88%e3%82%92%e3%82%b5%e3%82%a4%e3%83%88%e3%81%b8%e5%85%ac%e9%96%8b><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h4>
+</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=p>(</span><span class=nb>setq</span> <span class=nv>org-publish-project-alist</span>
+      <span class=p>(</span><span class=nf>list</span>
+       <span class=p>(</span><span class=nf>list</span> <span class=s>&#34;keido&#34;</span>
+             <span class=nb>:recursive</span> <span class=no>t</span>
+             <span class=nb>:base-directory</span> <span class=p>(</span><span class=nv>file-truename</span> <span class=s>&#34;~/keido/notes/wiki&#34;</span><span class=p>)</span>
+             <span class=nb>:publishing-directory</span> <span class=s>&#34;~/repo/keido-hugo/content/notes&#34;</span>
+             <span class=nb>:publishing-function</span> <span class=ss>&#39;org-hugo-export-wim-to-md</span><span class=p>)))</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h3 id=bibtex関連--org-ref>
+bibtex関連(Org-ref)
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#bibtex関連--org-ref class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor bibtex関連(Org-ref)" href=#bibtex%e9%96%a2%e9%80%a3--org-ref><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h3>
+</div><p>文献管理. Zoteroと連携して，論文というよりは書籍やYoutube動画やWeb記事のメモに利用.</p>
+<ul>
+<li>org-ref</li>
+<li>ivy-bibtex
+<ul>
+<li>ivyのactionは ivy-bibtexでC-SPCで選択-> C-M-oでaction選択候補を出し，pとかeとか押す.</li>
+</ul>
+</li>
+<li>org-roam-bibtex</li>
+</ul>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=p>(</span><span class=nv>use-package!</span> <span class=nv>org-ref</span>
+  <span class=nb>:config</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>bibtex-completion-bibliography</span> <span class=p>(</span><span class=nf>list</span> <span class=p>(</span><span class=nv>file-truename</span> <span class=s>&#34;~/keido/references/zotLib.bib&#34;</span><span class=p>)))</span>
+
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>bibtex-completion-additional-search-fields</span> <span class=o>&#39;</span><span class=p>(</span><span class=nv>keywords</span><span class=p>))</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>bibtex-completion-display-formats</span>
+    <span class=o>&#39;</span><span class=p>((</span><span class=nv>online</span>       <span class=o>.</span> <span class=s>&#34;${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:24} ${title:*}&#34;</span><span class=p>)</span>
+      <span class=p>(</span><span class=nv>book</span>         <span class=o>.</span> <span class=s>&#34;${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:24} ${title:*}&#34;</span><span class=p>)</span>
+      <span class=p>(</span><span class=nv>video</span>        <span class=o>.</span> <span class=s>&#34;${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${editor:24} ${title:*}&#34;</span><span class=p>)</span>
+      <span class=p>(</span><span class=nv>paper</span>        <span class=o>.</span> <span class=s>&#34;${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:24} ${title:*}&#34;</span><span class=p>)</span>
+      <span class=p>(</span><span class=no>t</span>            <span class=o>.</span> <span class=s>&#34;${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:24} ${title:*}&#34;</span><span class=p>)))</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>bibtex-completion-pdf-symbol</span> <span class=s>&#34;📓&#34;</span><span class=p>)</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>bibtex-completion-notes-symbol</span> <span class=s>&#34;📝&#34;</span><span class=p>)</span>
+
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>bibtex-completion-pdf-field</span> <span class=s>&#34;file&#34;</span><span class=p>)</span>
+  <span class=c1>;; (setq bibtex-completion-pdf-open-function</span>
+  <span class=c1>;;	(lambda (fpath)</span>
+  <span class=c1>;;	  (call-process &#34;open&#34; nil 0 nil fpath)))</span>
+
+  <span class=c1>;; Create fields for Film type</span>
+  <span class=p>(</span><span class=nv>add-to-list</span> <span class=ss>&#39;bibtex-biblatex-field-alist</span>
+               <span class=o>&#39;</span><span class=p>((</span><span class=s>&#34;video&#34;</span> <span class=s>&#34;Video or Audio(like YouTube)&#34;</span><span class=p>)))</span>
+
+  <span class=p>(</span><span class=nv>add-to-list</span> <span class=ss>&#39;bibtex-biblatex-entry-alist</span>
+               <span class=o>&#39;</span><span class=p>(</span><span class=s>&#34;video&#34;</span> <span class=s>&#34;A Video&#34;</span>
+                 <span class=p>(</span><span class=s>&#34;video&#34;</span><span class=o>,</span> <span class=s>&#34;title&#34;</span> <span class=s>&#34;editor&#34;</span> <span class=s>&#34;date&#34;</span> <span class=s>&#34;url&#34;</span> <span class=s>&#34;urldate&#34;</span> <span class=s>&#34;abstract&#34;</span> <span class=s>&#34;editortype&#34;</span><span class=p>)</span>
+                 <span class=no>nil</span>
+                 <span class=s>&#34;keywords&#34;</span><span class=p>))</span>
+  <span class=p>(</span><span class=nv>bibtex-set-dialect</span> <span class=ss>&#39;biblatex</span><span class=p>))</span>
+
+<span class=p>(</span><span class=nv>use-package!</span> <span class=nv>ivy-bibtex</span>
+  <span class=nb>:after</span> <span class=nv>org-ref</span>
+  <span class=nb>:init</span>
+  <span class=p>(</span><span class=nv>map!</span>
+   <span class=nb>:leader</span>
+   <span class=nb>:prefix</span> <span class=p>(</span><span class=s>&#34;b&#34;</span> <span class=o>.</span> <span class=s>&#34;org-ref&#34;</span><span class=p>)</span>
+     <span class=s>&#34;b&#34;</span> <span class=nf>#&#39;</span><span class=nv>org-ref-bibtex-hydra/body</span>
+     <span class=s>&#34;v&#34;</span> <span class=nf>#&#39;</span><span class=nv>ivy-bibtex</span>
+     <span class=s>&#34;c&#34;</span> <span class=nf>#&#39;</span><span class=nv>org-ref-insert-cite-link</span>
+     <span class=s>&#34;a&#34;</span> <span class=nf>#&#39;</span><span class=nv>orb-note-actions</span>
+     <span class=s>&#34;i&#34;</span> <span class=nf>#&#39;</span><span class=nv>orb-insert-link</span><span class=p>)</span>
+  <span class=nb>:config</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>ivy-re-builders-alist</span>
+        <span class=o>&#39;</span><span class=p>((</span><span class=nv>ivy-bibtex</span> <span class=o>.</span> <span class=nv>ivy--regex-ignore-order</span><span class=p>)</span>
+          <span class=p>(</span><span class=no>t</span> <span class=o>.</span> <span class=nv>ivy--regex-plus</span><span class=p>)))</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>ivy-bibtex-default-action</span> <span class=nf>#&#39;</span><span class=nv>ivy-bibtex-open-url-or-doi</span><span class=p>)</span>
+  <span class=p>(</span><span class=nv>ivy-set-actions</span>
+   <span class=ss>&#39;ivy-bibtex</span>
+   <span class=o>&#39;</span><span class=p>((</span><span class=s>&#34;p&#34;</span> <span class=nv>ivy-bibtex-open-any</span> <span class=s>&#34;Open PDF, URL, or DOI&#34;</span> <span class=nv>ivy-bibtex-open-any</span><span class=p>)</span>
+     <span class=p>(</span><span class=s>&#34;e&#34;</span> <span class=nv>ivy-bibtex-edit-notes</span> <span class=s>&#34;Edit notes&#34;</span> <span class=nv>ivy-bibtex-edit-notes</span><span class=p>)))</span>
+  <span class=p>)</span>
+
+<span class=p>(</span><span class=nv>use-package!</span> <span class=nv>org-roam-protocol</span>
+  <span class=nb>:after</span> <span class=nv>org-protocol</span><span class=p>)</span>
+
+<span class=p>(</span><span class=nv>use-package!</span> <span class=nv>org-roam-bibtex</span>
+  <span class=nb>:after</span> <span class=nv>org-roam</span> <span class=nv>ivy-bibtex</span>
+  <span class=nb>:hook</span> <span class=p>(</span><span class=nv>org-mode</span> <span class=o>.</span> <span class=nv>org-roam-bibtex-mode</span><span class=p>)</span>
+  <span class=nb>:custom</span>
+  <span class=p>(</span><span class=nv>orb-insert-interface</span> <span class=ss>&#39;ivy-bibtex</span><span class=p>)</span>
+  <span class=nb>:config</span>
+    <span class=p>(</span><span class=nb>setq</span> <span class=nv>orb-preformat-keywords</span> <span class=o>&#39;</span><span class=p>(</span><span class=s>&#34;author&#34;</span> <span class=s>&#34;date&#34;</span> <span class=s>&#34;url&#34;</span> <span class=s>&#34;title&#34;</span> <span class=s>&#34;isbn&#34;</span> <span class=s>&#34;publisher&#34;</span> <span class=s>&#34;urldate&#34;</span> <span class=s>&#34;editor&#34;</span> <span class=s>&#34;file&#34;</span><span class=p>))</span>
+    <span class=p>(</span><span class=nb>setq</span> <span class=nv>orb-process-file-keyword</span> <span class=no>t</span><span class=p>)</span>
+    <span class=p>(</span><span class=nb>setq</span> <span class=nv>orb-attached-file-extensions</span> <span class=o>&#39;</span><span class=p>(</span><span class=s>&#34;pdf&#34;</span><span class=p>)))</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h3 id=org-noter>
+Org-noter
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#org-noter class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Org-noter" href=#org-noter><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h3>
+</div><p>PDFの注釈を管理する. <a class=gdoc-markdown__link href=https://github.com/weirdNox/org-noter>:link:weirdNox/org-noter</a></p>
+<p>はじめの起動がどうやればいいのかワカラなかった.
+特定のファイルに記録を残したい場合はPDFのBufferではなく,
+適当なheading作成してM-x org-noterを起動するとPDFを選択できる.</p>
+<p>M-x org-noter-create-skeltonという関数がヤばい. <a class=gdoc-markdown__link href="https://youtu.be/lCc3UoQku-E?t=68">🔗Youtube動画(1:08)</a>
+PDFからOutlineを抜き出してOrg fileに生成して，あとはそのOrg-fileのBulletのカーソルを移動するとPDFのほうもシンクロして移動できる.</p>
+<p>凄すぎて笑った😂</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=p>(</span><span class=nv>use-package!</span> <span class=nv>org-noter</span>
+  <span class=nb>:after</span> <span class=p>(</span><span class=nb>:any</span> <span class=nv>org</span> <span class=nv>pdf-view</span><span class=p>)</span>
+  <span class=nb>:config</span>
+  <span class=p>(</span><span class=nb>setq</span>
+   <span class=c1>;; I want to see the whole file</span>
+   <span class=nv>org-noter-hide-other</span> <span class=no>nil</span>
+   <span class=c1>;; Everything is relative to the main notes file</span>
+   <span class=nv>org-noter-notes-search-path</span> <span class=p>(</span><span class=nf>list</span> <span class=p>(</span><span class=nv>file-truename</span> <span class=s>&#34;~/keido/notes/wiki&#34;</span><span class=p>))</span>
+   <span class=p>))</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h2 id=term>
+Term
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#term class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Term" href=#term><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h2>
+</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=c1>;; Term</span>
+<span class=c1>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h2 id=tools>
+Tools
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#tools class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Tools" href=#tools><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h2>
+</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=c1>;; Tools</span>
+<span class=c1>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h2 id=ui>
+UI
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#ui class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor UI" href=#ui><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h2>
+</div><div class=gdoc-page__anchorwrap>
+<h3 id=doom>
+Doom
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#doom class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Doom" href=#doom><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h3>
+</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=c1>;; UI</span>
+<span class=c1>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span class=c1>;; どうもフォントが奇数だと org-table の表示が崩れる.</span>
+<span class=c1>;; Source Han Code JP だとそもそも org-table の表示が崩れる.</span>
+<span class=c1>;; terminal だと大丈夫な模様.そもそも Terminal はこの設定ではなくて Terminal Emulator の設定がきく.</span>
+
+<span class=c1>;; (setq doom-font (font-spec :family &#34;Source Han Code JP&#34; :size 12 ))</span>
+<span class=p>(</span><span class=nb>setq</span> <span class=nv>doom-font</span> <span class=p>(</span><span class=nf>font-spec</span> <span class=nb>:family</span> <span class=s>&#34;Ricty Diminished&#34;</span> <span class=nb>:size</span> <span class=mi>15</span><span class=p>))</span>
+<span class=c1>;; doom-molokaiやdoom-monokai-classicだとewwの表示がいまいち.</span>
+<span class=p>(</span><span class=nb>setq</span> <span class=nv>doom-theme</span> <span class=ss>&#39;doom-monokai-pro</span><span class=p>)</span>
+<span class=p>(</span><span class=nv>doom-themes-org-config</span><span class=p>)</span>
+
+<span class=c1>;; counselとdoom-modelineが相性悪いようなのでworkspace name表示のためには追加で設定.</span>
+<span class=c1>;; https://github.com/hlissner/doom-emacs/issues/314</span>
+<span class=p>(</span><span class=nv>after!</span> <span class=nv>doom-modeline</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>doom-modeline-persp-name</span> <span class=no>t</span><span class=p>))</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h3 id=emojify>
+emojify
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#emojify class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor emojify" href=#emojify><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h3>
+</div><p>Emacsで絵文字をつかう.</p>
+<p>どうもemojifyの絵文字辞書は，emojione-v2.2.6-22というものでやや古い.
+Twitterが好きなのでTwitterのオープンソース辞書のtwemojiに変更.</p>
+<p><a class=gdoc-markdown__link href=https://github.com/iqbalansari/emacs-emojify/blob/master/data/emoji-sets.json>https://github.com/iqbalansari/emacs-emojify/blob/master/data/emoji-sets.json</a></p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=p>(</span><span class=nv>after!</span> <span class=nv>emojify</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>emojify-emoji-set</span> <span class=s>&#34;twemoji-v2-22&#34;</span><span class=p>))</span>
+</code></pre></div><p>ただ，2022現在twemojiはv13なのでv2は古いな..というかでないやつもおおい.</p>
+<p>Emacsの機能でemoji-searchがあるのでこれも設定しておこう.
+こっちの辞書のほうが扱える文字か多い.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=c1>;; doomだと C-c i eでemojify-insert-emoji</span>
+<span class=p>(</span><span class=nv>global-set-key</span> <span class=p>(</span><span class=nv>kbd</span> <span class=s>&#34;C-c i E&#34;</span><span class=p>)</span> <span class=ss>&#39;emoji-search</span><span class=p>)</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h3 id=perfect-margin>
+perfect-margin
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#perfect-margin class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor perfect-margin" href=#perfect-margin><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h3>
+</div><p>いい感じにmarginをとってくれる (<a class=gdoc-markdown__link href=https://github.com/mpwang/perfect-margin>https://github.com/mpwang/perfect-margin</a>)</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp><span class=p>(</span><span class=nv>use-package!</span> <span class=nv>perfect-margin</span>
+  <span class=nb>:config</span>
+  <span class=p>(</span><span class=nv>perfect-margin-mode</span> <span class=mi>1</span><span class=p>))</span>
+</code></pre></div><div class=gdoc-page__anchorwrap>
+<h3 id=others>
+Others
+<a data-clipboard-text=https://tsu-nera.github.io/keido/notes/hekireki/#others class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Others" href=#others><svg class="icon gdoc_link"><use xlink:href="#gdoc_link"/></svg>
+</a>
+</h3>
+</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-emacs-lisp data-lang=emacs-lisp>
+<span class=p>(</span><span class=nb>setq</span> <span class=nv>display-line-numbers-type</span> <span class=no>t</span><span class=p>)</span> <span class=c1>; 行番号表示</span>
+
+<span class=c1>;; less でのファイル閲覧に操作性を似せる mode.</span>
+<span class=c1>;; view-mode は emacs 内蔵. C-x C-r で read-only-mode でファイルオープン</span>
+<span class=c1>;; doom emacs だと C-c t r で read-only-mode が起動する.</span>
+<span class=p>(</span><span class=nv>add-hook!</span> <span class=nv>view-mode</span>
+  <span class=p>(</span><span class=nb>setq</span> <span class=nv>view-read-only</span> <span class=no>t</span><span class=p>)</span>
+  <span class=p>(</span><span class=nf>define-key</span> <span class=nv>ctl-x-map</span> <span class=s>&#34;\C-q&#34;</span> <span class=ss>&#39;view-mode</span><span class=p>)</span> <span class=c1>;; assinged C-x C-q.</span>
+
+  <span class=c1>;; less っぼく.</span>
+  <span class=p>(</span><span class=nf>define-key</span> <span class=nv>view-mode-map</span> <span class=p>(</span><span class=nv>kbd</span> <span class=s>&#34;p&#34;</span><span class=p>)</span> <span class=ss>&#39;view-scroll-line-backward</span><span class=p>)</span>
+  <span class=p>(</span><span class=nf>define-key</span> <span class=nv>view-mode-map</span> <span class=p>(</span><span class=nv>kbd</span> <span class=s>&#34;n&#34;</span><span class=p>)</span> <span class=ss>&#39;view-scroll-line-forward</span><span class=p>)</span>
+  <span class=c1>;; default の e でもいいけど，mule 時代に v に bind されてたので, emacs でも v に bind しておく.</span>
+  <span class=p>(</span><span class=nf>define-key</span> <span class=nv>view-mode-map</span> <span class=p>(</span><span class=nv>kbd</span> <span class=s>&#34;v&#34;</span><span class=p>)</span> <span class=ss>&#39;read-only-mode</span><span class=p>))</span>
+
+</code></pre></div>
+</article>
+<div class="gdoc-page__footer flex flex-wrap justify-between">
+</div>
+</div>
+</main>
+<footer class=gdoc-footer>
+<div class="container flex">
+<div class="flex flex-wrap">
+<span class="gdoc-footer__item gdoc-footer__item--row">
+Built with <a href=https://gohugo.io/ class=gdoc-footer__link>Hugo</a> and<svg class="icon gdoc_heart"><use xlink:href="#gdoc_heart"/></svg>
+</span>
+</div>
+</div>
+</footer>
+</div>
+<script defer src=/keido/js/en.search.min.26a38a87567c218b48ddb8cbaa4cb85481ced7ebb7861a491d4d190c616d43d1.js></script>
+<script defer src=/keido/js/clipboard-27784b7376.min.js></script>
+<script defer src=/keido/js/clipboard-loader-832dc83c27.min.js></script>
+<script defer src=/keido/js/copycode-fd03c0d24f.min.js></script>
+</body>
+</html>
