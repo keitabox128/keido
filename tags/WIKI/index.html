@@ -180,11 +180,11 @@ Jan 1, 0001
 Emacs Tips fcitxでEmacs GUIの日本語入力ができないときの対処方法 環境変数でLC_CTYPE=zh_CN.UTF-8を設定して起動する.
 link: https://fcitx-im.org/wiki/Input%5Fmethod%5Frelated%5Fenvironment%5Fvariables
 #!/bin/bash LC_CTYPE=zh_CN.UTF-8 emacs 日本語情報がなくて苦戦したが中国語でも同じ課題があるだろうという観点で検索したら解決方法か見つかったので載せておく.
+追記: 2022-01-12 &ndash;with-xinput2 どうも数週間前に手元でビルドしたときは問題なく入力できていたのに，年明けにビルドしたら入力ができなくなってしまった. AURからインストールしたものは動作したので，そこで指定されている引数を参考にしてなにが影響しているか何度もビルドして調べたら，&ndash;with-xinput2という引数をわたしたら問題なくビルドできた.これが一時的な不具合なのか，native comp特有の問題なのかは障害情報を漁ったわけではないのでわからない.
+./configure &ndash;with-native-compilation &ndash;with-xinput2
 howto: init.elをOrg Fileから生成するには? see
 Emacsの設定（その2）設定ファイル（init.el）をorg-modeで管理する | A perfect autumn day init.elをOrg Fileから生成してそうなサイト https://takaxp.github.io/init.html https://www.grugrut.net/posts/my-emacs-init-el/ https://mugijiru.github.io/.emacs.d/basics/custom-file/ example: Doom Emacs実装 わたしの場合，Doom Emacsをつかっている(2022現在)ので，init.elではなくconfig.elに設定を追加.
 (require 'org-install) (org-babel-load-file "~/.doom.d/hekireki.org") 参照 現在のわたしの設定: ⚡My Emacs Config - 霹靂一閃
-以前，babel-loaderをつかってOrg fileを細かく分割して管理していたが，カオスになったのでゴミ箱に捨てました.
-🖊babel-loader:org-mode で init.
 </section>
 <div class=gdoc-post__readmore>
 <a class="flex-inline align-center fake-link" title="Read full post" href=/keido/notes/20211228180209/>Read full post</a>
